@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>TNHTweaker_UI.WPF</RootNamespace>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TNHTweaker-UI.BusinessLogic\TNHTweaker-UI.BusinessLogic.csproj" />
+    <ProjectReference Include="..\TNHTweaker-UI.Common\TNHTweaker-UI.Common.csproj" />
+    <ProjectReference Include="..\TNHTweaker-UI.Models\TNHTweaker-UI.Models.csproj" />
+  </ItemGroup>
+
+</Project>
