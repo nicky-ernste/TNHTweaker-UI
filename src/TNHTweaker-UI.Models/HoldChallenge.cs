@@ -1,4 +1,6 @@
-﻿namespace TNHTweaker_UI.Models
+﻿using System.Collections.Generic;
+
+namespace TNHTweaker_UI.Models
 {
     /// <summary>
     /// Class that defines that options for all phases of a hold.
@@ -8,6 +10,6 @@
         /// <summary>
         /// Definition of phases for this hold.
         /// </summary>
-        public PhaseDefinition Phases { get; set; }
+        public IList<PhaseDefinition> Phases { get; set; }
     }
 }

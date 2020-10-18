@@ -11,56 +11,56 @@ namespace TNHTweaker_UI.Models.Enums
         /// <summary>
         /// No action type limit on spawning.
         /// </summary>
-        None = 0,
+        None = 1,
 
         /// <summary>
         /// Spawns break action weapons.
         /// </summary>
-        BreakAction = 1,
+        BreakAction = 2,
 
         /// <summary>
         /// Spawns bolt action weapons.
         /// </summary>
-        BoltAction = 2,
+        BoltAction = 4,
 
         /// <summary>
         /// Spawns revolvers.
         /// </summary>
-        Revolver = 4,
+        Revolver = 8,
 
         /// <summary>
         /// Spawns pump action weapons.
         /// </summary>
-        PumpAction = 8,
+        PumpAction = 16,
 
         /// <summary>
         /// Spawns lever action weapons.
         /// </summary>
-        LeverAction = 16,
+        LeverAction = 32,
 
         /// <summary>
         /// Spawns automatic weapons.
         /// </summary>
-        Automatic = 32,
+        Automatic = 64,
 
         /// <summary>
         /// Spawns rolling block weapons.
         /// </summary>
-        RollingBlock = 64,
+        RollingBlock = 128,
 
         /// <summary>
         /// Spawns open breach weapons.
         /// </summary>
-        OpenBreach = 128,
+        OpenBreach = 256,
 
         /// <summary>
         /// Spawns pre-loaded weapons.
         /// </summary>
-        PreLoaded = 256,
+        PreLoaded = 512,
 
         /// <summary>
         /// Spawns single action revolvers.
         /// </summary>
-        SingleActionRevolver = 512
+        SingleActionRevolver = 1024
     }
 }

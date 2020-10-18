@@ -11,36 +11,36 @@ namespace TNHTweaker_UI.Models.Enums
         /// <summary>
         /// No specific type of melee weapon.
         /// </summary>
-        None = 0,
+        None = 1,
 
         /// <summary>
         /// Spawns tactical melee weapons.
         /// </summary>
-        Tactical = 1,
+        Tactical = 2,
 
         /// <summary>
         /// Spawns melee weapons that are tools.
         /// </summary>
-        Tool = 2,
+        Tool = 4,
 
         /// <summary>
         /// Spawns improvised melee weapons.
         /// </summary>
-        Improvised = 4,
+        Improvised = 8,
 
         /// <summary>
         /// Spawns medieval melee weapons.
         /// </summary>
-        Medieval = 8,
+        Medieval = 16,
 
         /// <summary>
         /// Spawns hand-held shields.
         /// </summary>
-        Shield = 16,
+        Shield = 32,
 
         /// <summary>
         /// Spawns power tools.
         /// </summary>
-        PowerTool = 32
+        PowerTool = 64
     }
 }

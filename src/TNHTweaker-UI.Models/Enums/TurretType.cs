@@ -8,26 +8,26 @@
         /// <summary>
         /// Spawns SMG turrets.
         /// </summary>
-        SMG = 0,
+        SMG = 1,
 
         /// <summary>
         /// Spawns Flak turrets.
         /// </summary>
-        FLAK = 1,
+        FLAK = 2,
 
         /// <summary>
         /// Spawns Machine gun turrets.
         /// </summary>
-        Machinegun = 2,
+        Machinegun = 4,
 
         /// <summary>
         /// Spawns Flamethrower turrets.
         /// </summary>
-        Flamethrower = 4,
+        Flamethrower = 8,
 
         /// <summary>
         /// Spawns Suppression turrets.
         /// </summary>
-        Suppression = 8
+        Suppression = 16
     }
 }

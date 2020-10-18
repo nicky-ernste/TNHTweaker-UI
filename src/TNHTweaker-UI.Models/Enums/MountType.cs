@@ -11,31 +11,31 @@ namespace TNHTweaker_UI.Models.Enums
         /// <summary>
         /// No specific mounting options selected.
         /// </summary>
-        None = 0,
+        None = 1,
 
         /// <summary>
         /// Spawns weapons that have Picatinny rails.
         /// </summary>
-        Picatinny = 1,
+        Picatinny = 2,
 
         /// <summary>
         /// Spawns weapons that have russian optic mounts.
         /// </summary>
-        Russian = 2,
+        Russian = 4,
 
         /// <summary>
         /// Spawns weapons that can take muzzle attachments.
         /// </summary>
-        Muzzle = 4,
+        Muzzle = 8,
 
         /// <summary>
         /// Spawns weapons that can take stock attachments.
         /// </summary>
-        Stock = 8,
+        Stock = 16,
 
         /// <summary>
         /// Spawns weapons that have their own unique attachments.
         /// </summary>
-        Bespoke = 16
+        Bespoke = 32
     }
 }

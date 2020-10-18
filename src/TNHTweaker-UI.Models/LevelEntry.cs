@@ -1,4 +1,6 @@
-﻿namespace TNHTweaker_UI.Models
+﻿using TNHTweaker_UI.Models.Attributes;
+
+namespace TNHTweaker_UI.Models
 {
     /// <summary>
     /// Class that defines the challenges for a single level in the progression for a character.
@@ -13,7 +15,7 @@
         /// <summary>
         /// The number of additional supply points that will be spawned on top of the normal amount.
         /// </summary>
-        //TODO create a attribute for custom names, because an @ character is not allowed in variable names.
+        [PropertyName("@AdditionalSupplyPoints")]
         public int AdditionalSupplyPoints { get; set; }
 
         /// <summary>

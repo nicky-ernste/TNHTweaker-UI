@@ -1,4 +1,6 @@
-﻿using TNHTweaker_UI.Models.Enums;
+﻿using System.Collections.Generic;
+using TNHTweaker_UI.Models.Attributes;
+using TNHTweaker_UI.Models.Enums;
 
 namespace TNHTweaker_UI.Models
 {
@@ -38,38 +40,45 @@ namespace TNHTweaker_UI.Models
         public bool UsesPurchasePriceIncrement { get; set; }
 
         /// <summary>
-        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="Weapon_Primary"/> object
+        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="WeaponPrimary"/> object
         /// </summary>
+        [PropertyName("Has_Weapon_Primary")]
         public bool HasWeaponPrimary { get; set; }
 
         /// <summary>
-        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="Weapon_Secondary"/> object
+        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="WeaponSecondary"/> object
         /// </summary>
+        [PropertyName("Has_Weapon_Secondary")]
         public bool HasWeaponSecondary { get; set; }
 
         /// <summary>
-        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="Weapon_Tertiary"/> object
+        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="WeaponTertiary"/> object
         /// </summary>
+        [PropertyName("Has_Weapon_Tertiary")]
         public bool HasWeaponTertiary { get; set; }
 
         /// <summary>
-        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="Item_Primary"/> object
+        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="ItemPrimary"/> object
         /// </summary>
+        [PropertyName("Has_Item_Primary")]
         public bool HasItemPrimary { get; set; }
 
         /// <summary>
-        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="Item_Secondary"/> object
+        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="ItemSecondary"/> object
         /// </summary>
+        [PropertyName("Has_Item_Secondary")]
         public bool HasItemSecondary { get; set; }
 
         /// <summary>
-        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="Item_Tertiary"/> object
+        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="ItemTertiary"/> object
         /// </summary>
+        [PropertyName("Has_Item_Tertiary")]
         public bool HasItemTertiary { get; set; }
 
         /// <summary>
-        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="Item_Shield"/> object
+        /// If <c>true</c>, the player will spawn with an item chosen from the <see cref="ItemShield"/> object
         /// </summary>
+        [PropertyName("Has_Item_Shield")]
         public bool HasItemShield { get; set; }
 
         #region Starting weapon definitions
@@ -77,37 +86,44 @@ namespace TNHTweaker_UI.Models
         /// <summary>
         /// Definition of the primary weapon the character can start with.
         /// </summary>
-        public WeaponDefinition Weapon_Primary { get; set; }
+        [PropertyName("Weapon_Primary")]
+        public WeaponDefinition WeaponPrimary { get; set; }
 
         /// <summary>
         /// Definition of the secondary weapon the character can start with.
         /// </summary>
-        public WeaponDefinition Weapon_Secondary { get; set; }
+        [PropertyName("Weapon_Secondary")]
+        public WeaponDefinition WeaponSecondary { get; set; }
 
         /// <summary>
         /// Definition of the tertiary weapon the character can start with.
         /// </summary>
-        public WeaponDefinition Weapon_Tertiary { get; set; }
+        [PropertyName("Weapon_Tertiary")]
+        public WeaponDefinition WeaponTertiary { get; set; }
 
         /// <summary>
         /// Definition of the primary item the character can start with.
         /// </summary>
-        public WeaponDefinition Item_Primary { get; set; }
+        [PropertyName("Item_Primary")]
+        public WeaponDefinition ItemPrimary { get; set; }
 
         /// <summary>
         /// Definition of the secondary item the character can start with.
         /// </summary>
-        public WeaponDefinition Item_Secondary { get; set; }
+        [PropertyName("Item_Secondary")]
+        public WeaponDefinition ItemSecondary { get; set; }
 
         /// <summary>
         /// Definition of the tertiary item the character can start with.
         /// </summary>
-        public WeaponDefinition Item_Tertiary { get; set; }
+        [PropertyName("Item_Tertiary")]
+        public WeaponDefinition ItemTertiary { get; set; }
 
         /// <summary>
         /// Definition of the shield the character can start with.
         /// </summary>
-        public WeaponDefinition Item_Shield { get; set; }
+        [PropertyName("Item_Shield")]
+        public WeaponDefinition ItemShield { get; set; }
 
         #endregion
 
@@ -120,6 +136,6 @@ namespace TNHTweaker_UI.Models
         /// Definition of the holds, supplies and patrols.
         /// NOTE: Generally only one <see cref="ProgressionDefinition"/> is actually used.
         /// </summary>
-        public ProgressionDefinition[] Progressions { get; set; }
+        public IList<ProgressionDefinition> Progressions { get; set; }
     }
 }

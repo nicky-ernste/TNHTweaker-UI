@@ -1,4 +1,6 @@
-﻿namespace TNHTweaker_UI.Models
+﻿using System.Collections.Generic;
+
+namespace TNHTweaker_UI.Models
 {
     /// <summary>
     /// Class that defines the progression levels for a character.
@@ -8,6 +10,6 @@
         /// <summary>
         /// The list of levels that the character will go through (in order).
         /// </summary>
-        public LevelEntry[] Levels { get; set; }
+        public IList<LevelEntry> Levels { get; set; }
     }
 }

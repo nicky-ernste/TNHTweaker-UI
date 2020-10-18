@@ -11,76 +11,76 @@ namespace TNHTweaker_UI.Models.Enums
         /// <summary>
         /// Spawns health power-ups
         /// </summary>
-        Health = 0,
+        Health = 1,
 
         /// <summary>
         /// Spawns quad damage power-ups
         /// </summary>
-        QuadDamage = 1,
+        QuadDamage = 2,
 
         /// <summary>
         /// Spawns infinite ammo power-ups
         /// </summary>
-        InfiniteAmmo = 2,
+        InfiniteAmmo = 4,
 
         /// <summary>
         /// Spawns invincibility power-ups
         /// </summary>
-        Invincibility = 4,
+        Invincibility = 8,
 
         /// <summary>
         /// Spawns ghost mode power-ups
         /// </summary>
-        GhostMode = 8,
+        GhostMode = 16,
 
         /// <summary>
         /// Spawns far out meat power-ups
         /// </summary>
-        FarOutMeat = 16,
+        FarOutMeat = 32,
 
         /// <summary>
         /// Spawns muscle meats power-ups
         /// </summary>
-        MuscleMeat = 32,
+        MuscleMeat = 64,
 
         /// <summary>
         /// Spawns home town power-ups
         /// </summary>
-        HomeTown = 64,
+        HomeTown = 128,
 
         /// <summary>
         /// Spawns snake eye power-ups
         /// </summary>
-        SnakeEye = 128,
+        SnakeEye = 256,
 
         /// <summary>
         /// Spawns blort power-ups
         /// </summary>
-        Blort = 256,
+        Blort = 512,
 
         /// <summary>
         /// Spawns regeneration power-ups
         /// </summary>
-        Regen = 512,
+        Regen = 1024,
 
         /// <summary>
         /// Spawns cyclops power-ups
         /// </summary>
-        Cyclops = 1024,
+        Cyclops = 2048,
 
         /// <summary>
         /// Spawns wheredigo power-ups
         /// </summary>
-        WheredIGo = 2048,
+        WheredIGo = 4096,
 
         /// <summary>
         /// Spawns chill out power-ups
         /// </summary>
-        ChillOut = 4096,
+        ChillOut = 8192,
 
         /// <summary>
         /// No specific power-up spawns selected.
         /// </summary>
-        None = 8192
+        None = 16384
     }
 }
