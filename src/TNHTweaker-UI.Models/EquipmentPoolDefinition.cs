@@ -10,6 +10,6 @@ namespace TNHTweaker_UI.Models
         /// <summary>
         /// A list of all possible pools that can be spawned.
         /// </summary>
-        public IList<PoolEntry> Entries { get; set; }
+        public IList<PoolEntry> Entries { get; set; } = new List<PoolEntry>();
     }
 }

@@ -97,10 +97,96 @@ namespace TNHTweaker_UI.BusinessLogic
                         {
                             //Line is a statement
                             var lineSplit = innerLine.Split('=');
-                            FillInProperty(ref weaponDefinition, lineSplit[0], lineSplit[1],
-                                weaponDefinitionBaseProperties);
+                            FillInProperty(ref weaponDefinition, lineSplit[0], lineSplit[1], weaponDefinitionBaseProperties);
                         }
                     }
+                }
+
+                if (line.Equals("EquipmentPool{"))
+                {
+                    //Stepping into equipment pools.
+                    var equipmentPool = new EquipmentPoolDefinition();
+                    var property = line.Split('=')[0]?.TrimEnd('{');
+                    var keepReading = true;
+                    var indentCount = 0;
+
+                    for (var poolIndex = lineIndex + 1; keepReading; poolIndex++)
+                    {
+                        var poolLine = filteredCharacterDefinition[poolIndex].Trim();
+                        if (poolLine.Equals("{") || poolLine.EndsWith("["))
+                            indentCount++;
+                        if (poolLine.Equals("}") || poolLine.Equals("]"))
+                        {
+                            if (indentCount > 0)
+                                indentCount--;
+                            else
+                            {
+                                //Jump out of this section.
+                                lineIndex = poolIndex - 1;
+                                keepReading = false;
+                            }
+                        }
+
+                        if (indentCount == 2)
+                        {
+                            //Inside array of pool entries.
+                            var poolEntryBaseProperties = FindCustomProperties(typeof(PoolEntry));
+                            var poolEntry = new PoolEntry();
+                            var keepReadingPoolEntry = true;
+                            var entryIndentCount = 0;
+                            for (var entryIndex = poolIndex + 1; keepReadingPoolEntry; entryIndex++)
+                            {
+                                var entryLine = filteredCharacterDefinition[entryIndex].Trim();
+                                if (entryLine.EndsWith("{") || entryLine.EndsWith("["))
+                                    entryIndentCount++;
+                                if (entryLine.Equals("}") || entryLine.Equals("]"))
+                                {
+                                    if (entryIndentCount > 0)
+                                        entryIndentCount--;
+                                    else
+                                    {
+                                        //Jump out of this section.
+                                        poolIndex = entryIndex - 1;
+                                        equipmentPool.Entries.Add(poolEntry);
+                                        keepReadingPoolEntry = false;
+                                    }
+                                }
+
+                                if (entryIndentCount == 1)
+                                {
+                                    //Inside array of table definitions.
+                                    var objectTableDefinitionsBaseProperties = FindCustomProperties(typeof(ObjectTableDefinition));
+                                    var tableDefinition = new ObjectTableDefinition();
+                                    var keepReadingTableDef = true;
+                                    for (var tableDefIndex = entryIndex + 1; keepReadingTableDef; tableDefIndex++)
+                                    {
+                                        var tableDefLine = filteredCharacterDefinition[tableDefIndex].Trim();
+                                        if (tableDefLine.Equals("}"))
+                                        {
+                                            poolEntry.TableDef = tableDefinition;
+                                            entryIndex = tableDefIndex - 1; //Skip the lines we just read.
+                                            keepReadingTableDef = false;
+                                        }
+                                        if (tableDefLine.Contains("="))
+                                        {
+                                            //Line is a statement
+                                            var lineSplit = tableDefLine.Split('=');
+                                            FillInProperty(ref tableDefinition, lineSplit[0], lineSplit[1], objectTableDefinitionsBaseProperties);
+                                        }
+                                    }
+                                }
+
+                                if (entryLine.Contains("="))
+                                {
+                                    //Line is a statement.
+                                    var lineSplit = entryLine.Split('=');
+                                    FillInProperty(ref poolEntry, lineSplit[0], lineSplit[1], poolEntryBaseProperties);
+                                }
+                            }
+                        }
+                    }
+
+                    FillInProperty(ref characterInfo, property, equipmentPool, characterBaseProperties);
                 }
             }
 
@@ -194,6 +280,7 @@ namespace TNHTweaker_UI.BusinessLogic
             _propertyToEnumDictionary.Add("PowerupTypes", typeof(PowerupType));
             _propertyToEnumDictionary.Add("ThrownTypes", typeof(ThrownType));
             _propertyToEnumDictionary.Add("ThrownDamageTypes", typeof(ThrownDamageType));
+            _propertyToEnumDictionary.Add("Type", typeof(SpawnType));
         }
     }
 }
