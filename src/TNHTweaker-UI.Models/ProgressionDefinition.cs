@@ -10,6 +10,6 @@ namespace TNHTweaker_UI.Models
         /// <summary>
         /// The list of levels that the character will go through (in order).
         /// </summary>
-        public IList<LevelEntry> Levels { get; set; }
+        public IList<LevelEntry> Levels { get; set; } = new List<LevelEntry>();
     }
 }

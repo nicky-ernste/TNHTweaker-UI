@@ -10,6 +10,6 @@ namespace TNHTweaker_UI.Models
         /// <summary>
         /// Definition of phases for this hold.
         /// </summary>
-        public IList<PhaseDefinition> Phases { get; set; }
+        public IList<PhaseDefinition> Phases { get; set; } = new List<PhaseDefinition>();
     }
 }

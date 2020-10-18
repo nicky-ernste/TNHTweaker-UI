@@ -13,7 +13,7 @@ namespace TNHTweaker_UI.SerializerTester
             var filePath = ".\\character.txt";
             if (!File.Exists(filePath))
             {
-                Console.WriteLine("Cannout find the character.txt file in the base directory.");
+                Console.WriteLine("Cannot find the character.txt file in the base directory.");
                 Console.ReadKey();
                 return;
             }
@@ -21,6 +21,12 @@ namespace TNHTweaker_UI.SerializerTester
             var characterText = await File.ReadAllLinesAsync(filePath);
             var serializer = new CharacterSerializer();
             var character = serializer.ReadCharacterFromString(characterText);
+
+            if (character != null)
+            {
+                Console.WriteLine($"Parsed character: {character.DisplayName}");
+                Console.WriteLine(character.Description);
+            }
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();

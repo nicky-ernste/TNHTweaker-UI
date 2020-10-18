@@ -10,6 +10,7 @@ namespace TNHTweaker_UI.Models
         /// <summary>
         /// The number of tokens the character is rewarded for completing the level's <see cref="TakeChallenge"/>.
         /// </summary>
+        [PropertyName("NumOverrideTokensForHold")]
         public int NumberOfOverrideTokensForHold { get; set; }
 
         /// <summary>
@@ -17,6 +18,21 @@ namespace TNHTweaker_UI.Models
         /// </summary>
         [PropertyName("@AdditionalSupplyPoints")]
         public int AdditionalSupplyPoints { get; set; }
+
+        [PropertyName("@MaxBoxesSpawned")]
+        public int MaxBoxesSpawned { get; set; }
+
+        [PropertyName("@MinBoxesSpawned")]
+        public int MinBoxesSpawned { get; set; }
+
+        [PropertyName("@MaxTokensPerSupply")]
+        public int MaxTokensPerSupply { get; set; }
+
+        [PropertyName("@MinTokensPerSupply")]
+        public int MinTokensPerSupply { get; set; }
+
+        [PropertyName("@BoxTokenChance")]
+        public float BoxTokenChance { get; set; }
 
         /// <summary>
         /// Definition for defenses that are spawned at the hold point.

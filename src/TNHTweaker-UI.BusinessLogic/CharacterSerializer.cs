@@ -18,7 +18,7 @@ namespace TNHTweaker_UI.BusinessLogic
 
         public CharacterSerializer()
         {
-            FillEnumDirectionary();
+            FillEnumDictionary();
         }
 
         public CharacterInfo ReadCharacterFromString(string[] characterDefinition)
@@ -29,7 +29,7 @@ namespace TNHTweaker_UI.BusinessLogic
             //Filter out empty lines and lines that serve as comments.
             var filteredCharacterDefinition = characterDefinition.Where(line => !string.IsNullOrEmpty(line.Trim()) && !line.Trim().StartsWith("#")).ToArray();
             var characterInfo = new CharacterInfo();
-            var characterBaseProperties = FindCustomProperties(typeof(CharacterInfo));
+            var characterBaseProperties = FindCustomProperties<CharacterInfo>();
 
             for (var lineIndex = 0; lineIndex < filteredCharacterDefinition.Length; lineIndex++)
             {
@@ -45,7 +45,7 @@ namespace TNHTweaker_UI.BusinessLogic
                 if ((line.Contains("Weapon_") && line.EndsWith("{")) || (line.Contains("Item_") && line.EndsWith("{")))
                 {
                     //Stepping into weapon definitions.
-                    var weaponDefinitionBaseProperties = FindCustomProperties(typeof(WeaponDefinition));
+                    var weaponDefinitionBaseProperties = FindCustomProperties<WeaponDefinition>();
                     var property = line.Split('=')[0]?.TrimEnd('{');
                     var weaponDefinition = new WeaponDefinition();
                     var keepReading = true;
@@ -72,7 +72,7 @@ namespace TNHTweaker_UI.BusinessLogic
                         if (indentCount == 2)
                         {
                             //Inside array of table definitions.
-                            var objectTableDefinitionsBaseProperties = FindCustomProperties(typeof(ObjectTableDefinition));
+                            var objectTableDefinitionsBaseProperties = FindCustomProperties<ObjectTableDefinition>();
                             var tableDefinition = new ObjectTableDefinition();
                             var keepReadingTableDef = true;
                             for (var tableDefIndex = innerLineIndex + 1; keepReadingTableDef; tableDefIndex++)
@@ -130,7 +130,7 @@ namespace TNHTweaker_UI.BusinessLogic
                         if (indentCount == 2)
                         {
                             //Inside array of pool entries.
-                            var poolEntryBaseProperties = FindCustomProperties(typeof(PoolEntry));
+                            var poolEntryBaseProperties = FindCustomProperties<PoolEntry>();
                             var poolEntry = new PoolEntry();
                             var keepReadingPoolEntry = true;
                             var entryIndentCount = 0;
@@ -154,8 +154,8 @@ namespace TNHTweaker_UI.BusinessLogic
 
                                 if (entryIndentCount == 1)
                                 {
-                                    //Inside array of table definitions.
-                                    var objectTableDefinitionsBaseProperties = FindCustomProperties(typeof(ObjectTableDefinition));
+                                    //Stepping inside of table definition.
+                                    var objectTableDefinitionsBaseProperties = FindCustomProperties<ObjectTableDefinition>();
                                     var tableDefinition = new ObjectTableDefinition();
                                     var keepReadingTableDef = true;
                                     for (var tableDefIndex = entryIndex + 1; keepReadingTableDef; tableDefIndex++)
@@ -188,6 +188,241 @@ namespace TNHTweaker_UI.BusinessLogic
 
                     FillInProperty(ref characterInfo, property, equipmentPool, characterBaseProperties);
                 }
+
+                if (line.Equals("Progressions["))
+                {
+                    //Stepping into progressions.
+                    var progressionDefinition = new ProgressionDefinition();
+                    var keepReading = true;
+                    var firstLevel = true; //TODO Ugly hack that should be changed,
+                    var indentCount = 0;
+
+                    for (var progressionIndex = lineIndex + 1; keepReading; progressionIndex++)
+                    {
+                        var progressionLine = filteredCharacterDefinition[progressionIndex].Trim();
+                        if (progressionLine.Equals("{") || progressionLine.EndsWith("["))
+                            indentCount++;
+                        if (progressionLine.Equals("}") || progressionLine.Equals("]"))
+                        {
+                            if (indentCount > 0)
+                                indentCount--;
+                            else
+                            {
+                                //Jump out of this section.
+                                lineIndex = progressionIndex - 1;
+                                characterInfo.Progressions.Add(progressionDefinition);
+                                keepReading = false;
+                            }
+                        }
+
+                        if (indentCount == 2)
+                        {
+                            //Inside array of levels.
+                            var levelEntryBaseProperties = FindCustomProperties<LevelEntry>();
+                            var levelEntry = new LevelEntry();
+                            var keepReadingLevelEntry = true;
+                            var entryIndentCount = 0;
+                            for (var entryIndex = firstLevel ? progressionIndex + 2 : progressionIndex + 1; keepReadingLevelEntry; entryIndex++)
+                            {
+                                var entryLine = filteredCharacterDefinition[entryIndex].Trim();
+                                if (entryLine.EndsWith("{") || entryLine.EndsWith("["))
+                                    entryIndentCount++;
+                                if (entryLine.Equals("}") || entryLine.Equals("]"))
+                                {
+                                    if (entryIndentCount > 0)
+                                        entryIndentCount--;
+                                    else
+                                    {
+                                        //Jump out of this section.
+                                        progressionIndex = entryIndex - 1;
+                                        progressionDefinition.Levels.Add(levelEntry);
+                                        keepReadingLevelEntry = false;
+                                        firstLevel = false;
+                                    }
+                                }
+
+                                if (entryIndentCount == 1 && (entryLine.Equals("TakeChallenge{") || entryLine.Equals("SupplyChallenge{")))
+                                {
+                                    var challengeBaseProperties = FindCustomProperties<TakeSupplyChallenge>();
+                                    var challenge = new TakeSupplyChallenge();
+                                    var challengeProperty = entryLine.TrimEnd('{');
+                                    var keepReadingChallenge = true;
+                                    for (var challengeIndex = entryIndex + 1; keepReadingChallenge; challengeIndex++)
+                                    {
+                                        var challengeLine = filteredCharacterDefinition[challengeIndex].Trim();
+                                        if (challengeLine.Equals("}"))
+                                        {
+                                            //Jump out of this section.
+                                            entryIndex = challengeIndex - 1;
+                                            FillInProperty(ref levelEntry, challengeProperty, challenge, levelEntryBaseProperties);
+                                            keepReadingChallenge = false;
+                                        }
+                                        if (challengeLine.Contains("="))
+                                        {
+                                            //Line is a statement.
+                                            var lineSplit = challengeLine.Split('=');
+                                            FillInProperty(ref challenge, lineSplit[0], lineSplit[1], challengeBaseProperties);
+                                        }
+                                    }
+                                }
+
+                                if (entryIndentCount == 1 && (entryLine.Equals("HoldChallenge{")))
+                                {
+                                    var holdChallenge = new HoldChallenge();
+                                    var challengeProperty = entryLine.TrimEnd('{');
+                                    var keepReadingHoldChallenge = true;
+                                    var holdChallengeIndentCount = 0;
+                                    for (var holdChallengeIndex = entryIndex + 1; keepReadingHoldChallenge; holdChallengeIndex++)
+                                    {
+                                        var holdChallengeLine = filteredCharacterDefinition[holdChallengeIndex].Trim();
+                                        if (holdChallengeLine.EndsWith("{") || holdChallengeLine.EndsWith("["))
+                                            holdChallengeIndentCount++;
+                                        if (holdChallengeLine.Equals("}") || holdChallengeLine.Equals("]"))
+                                        {
+                                            if (holdChallengeIndentCount > 0)
+                                                holdChallengeIndentCount--;
+                                            else
+                                            {
+                                                //Jump out of this section.
+                                                entryIndex = holdChallengeIndex - 1;
+                                                FillInProperty(ref levelEntry, challengeProperty, holdChallenge, levelEntryBaseProperties);
+                                                keepReadingHoldChallenge = false;
+                                            }
+                                        }
+                                        if (holdChallengeIndentCount == 2)
+                                        {
+                                            var phaseBaseProperties = FindCustomProperties<PhaseDefinition>();
+                                            var phaseDefinition = new PhaseDefinition();
+                                            var keepReadingPhase = true;
+                                            for (var phaseIndex = holdChallengeIndex + 1; keepReadingPhase; phaseIndex++)
+                                            {
+                                                var phaseLine = filteredCharacterDefinition[phaseIndex].Trim();
+                                                if (phaseLine.Equals("}"))
+                                                {
+                                                    //Jump out of this section.
+                                                    holdChallengeIndex = phaseIndex - 1;
+                                                    holdChallenge.Phases.Add(phaseDefinition);
+                                                    keepReadingPhase = false;
+                                                }
+                                                if (phaseLine.Contains("="))
+                                                {
+                                                    //Line is a statement.
+                                                    var lineSplit = phaseLine.Split('=');
+                                                    FillInProperty(ref phaseDefinition, lineSplit[0], lineSplit[1], phaseBaseProperties);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (entryIndentCount == 1 && (entryLine.Equals("PatrolChallenge{")))
+                                {
+                                    var patrolChallenge = new PatrolChallenge();
+                                    var challengeProperty = entryLine.TrimEnd('{');
+                                    var keepReadingPatrolChallenge = true;
+                                    var patrolChallengeIndentCount = 0;
+                                    for (var patrolChallengeIndex = entryIndex + 1; keepReadingPatrolChallenge; patrolChallengeIndex++)
+                                    {
+                                        var patrolChallengeLine = filteredCharacterDefinition[patrolChallengeIndex].Trim();
+                                        if (patrolChallengeLine.EndsWith("{") || patrolChallengeLine.EndsWith("["))
+                                            patrolChallengeIndentCount++;
+                                        if (patrolChallengeLine.Equals("}") || patrolChallengeLine.Equals("]"))
+                                        {
+                                            if (patrolChallengeIndentCount > 0)
+                                                patrolChallengeIndentCount--;
+                                            else
+                                            {
+                                                //Jump out of this section.
+                                                entryIndex = patrolChallengeIndex - 1;
+                                                FillInProperty(ref levelEntry, challengeProperty, patrolChallenge, levelEntryBaseProperties);
+                                                keepReadingPatrolChallenge = false;
+                                            }
+                                        }
+                                        if (patrolChallengeIndentCount == 2)
+                                        {
+                                            var patrolBaseProperties = FindCustomProperties<PatrolDefinition>();
+                                            var patrolDefinition = new PatrolDefinition();
+                                            var keepReadingPatrol = true;
+                                            for (var patrolIndex = patrolChallengeIndex + 1; keepReadingPatrol; patrolIndex++)
+                                            {
+                                                var patrolLine = filteredCharacterDefinition[patrolIndex].Trim();
+                                                if (patrolLine.Equals("}"))
+                                                {
+                                                    //Jump out of this section.
+                                                    patrolChallengeIndex = patrolIndex - 1;
+                                                    patrolChallenge.Patrols.Add(patrolDefinition);
+                                                    keepReadingPatrol = false;
+                                                }
+                                                if (patrolLine.Contains("="))
+                                                {
+                                                    //Line is a statement.
+                                                    var lineSplit = patrolLine.Split('=');
+                                                    FillInProperty(ref patrolDefinition, lineSplit[0], lineSplit[1], patrolBaseProperties);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (entryIndentCount == 1 && (entryLine.Equals("TrapsChallenge{")))
+                                {
+                                    var trapsChallenge = new TrapsChallenge();
+                                    var challengeProperty = entryLine.TrimEnd('{');
+                                    var keepReadingTrapsChallenge = true;
+                                    var trapsChallengeIndentCount = 0;
+                                    for (var trapsChallengeIndex = entryIndex + 1; keepReadingTrapsChallenge; trapsChallengeIndex++)
+                                    {
+                                        var trapsChallengeLine = filteredCharacterDefinition[trapsChallengeIndex].Trim();
+                                        if (trapsChallengeLine.EndsWith("{") || trapsChallengeLine.EndsWith("["))
+                                            trapsChallengeIndentCount++;
+                                        if (trapsChallengeLine.Equals("}") || trapsChallengeLine.Equals("]"))
+                                        {
+                                            if (trapsChallengeIndentCount > 0)
+                                                trapsChallengeIndentCount--;
+                                            else
+                                            {
+                                                //Jump out of this section.
+                                                entryIndex = trapsChallengeIndex - 1;
+                                                FillInProperty(ref levelEntry, challengeProperty, trapsChallenge, levelEntryBaseProperties);
+                                                keepReadingTrapsChallenge = false;
+                                            }
+                                        }
+                                        if (trapsChallengeIndentCount == 2)
+                                        {
+                                            var trapBaseProperties = FindCustomProperties<TrapDefinition>();
+                                            var trapDefinition = new TrapDefinition();
+                                            var keepReadingTrap = true;
+                                            for (var trapIndex = trapsChallengeIndex + 1; keepReadingTrap; trapIndex++)
+                                            {
+                                                var trapLine = filteredCharacterDefinition[trapIndex].Trim();
+                                                if (trapLine.Equals("}"))
+                                                {
+                                                    //Jump out of this section.
+                                                    trapsChallengeIndex = trapIndex - 1;
+                                                    trapsChallenge.Traps.Add(trapDefinition);
+                                                    keepReadingTrap = false;
+                                                }
+                                                if (trapLine.Contains("="))
+                                                {
+                                                    //Line is a statement.
+                                                    var lineSplit = trapLine.Split('=');
+                                                    FillInProperty(ref trapDefinition, lineSplit[0], lineSplit[1], trapBaseProperties);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (entryLine.Contains("="))
+                                {
+                                    //Line is a statement.
+                                    var lineSplit = entryLine.Split('=');
+                                    FillInProperty(ref levelEntry, lineSplit[0], lineSplit[1], levelEntryBaseProperties);
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
             return characterInfo;
@@ -198,6 +433,14 @@ namespace TNHTweaker_UI.BusinessLogic
             return string.Empty;
         }
 
+        /// <summary>
+        /// Attempts to fill a property on the given <paramref name="instanceWithProperty"/> using reflection.
+        /// </summary>
+        /// <typeparam name="T">The type of the object with the given <paramref name="property"/> that needs the given <paramref name="value"/>.</typeparam>
+        /// <param name="instanceWithProperty">The instance of <typeparamref name="T"/> that needs to have the given <paramref name="property"/> filled with the given <paramref name="value"/>.</param>
+        /// <param name="property">The property on <paramref name="instanceWithProperty"/> that needs to get the given <paramref name="value"/>.</param>
+        /// <param name="value">The value that will be inserted on the given <paramref name="property"/> on the specified <paramref name="instanceWithProperty"/>.</param>
+        /// <param name="customProperties">A <see cref="Dictionary{TKey,TValue}"/> that holds any custom property names for <paramref name="instanceWithProperty"/>.</param>
         private void FillInProperty<T>(ref T instanceWithProperty, string property, object value, Dictionary<string, string> customProperties)
         {
             customProperties.TryGetValue(property, out var customPropertyName);
@@ -210,11 +453,12 @@ namespace TNHTweaker_UI.BusinessLogic
             if (value is string stringValue)
             {
                 _propertyToEnumDictionary.TryGetValue(property, out var enumType);
+                if (property.Equals("Type") && instanceWithProperty is TrapDefinition)
+                    enumType = typeof(TrapType); //TODO ugly override for a property with the same name but different type.
                 if (enumType != null && !string.IsNullOrEmpty(stringValue))
                 {
                     var enumValue = Enum.Parse(enumType, stringValue);
-                    instanceWithProperty?.GetType().GetProperty(customPropertyName)
-                        ?.SetValue(instanceWithProperty, enumValue);
+                    instanceWithProperty?.GetType().GetProperty(customPropertyName)?.SetValue(instanceWithProperty, enumValue);
                     return;
                 }
 
@@ -222,8 +466,12 @@ namespace TNHTweaker_UI.BusinessLogic
                 {
                     case TypeCode.Int32:
                         var intValue = int.Parse(string.IsNullOrEmpty(stringValue) ? "0" : stringValue);
-                        instanceWithProperty?.GetType().GetProperty(customPropertyName)
-                            ?.SetValue(instanceWithProperty, intValue);
+                        instanceWithProperty?.GetType().GetProperty(customPropertyName)?.SetValue(instanceWithProperty, intValue);
+                        break;
+                    case TypeCode.Single:
+                        stringValue = stringValue.Replace('.', ',');
+                        var decimalValue = float.Parse(string.IsNullOrEmpty(stringValue) ? "0.0" : stringValue);
+                        instanceWithProperty?.GetType().GetProperty(customPropertyName)?.SetValue(instanceWithProperty, decimalValue);
                         break;
                     case TypeCode.String:
                         instanceWithProperty?.GetType().GetProperty(customPropertyName)?.SetValue(instanceWithProperty, value);
@@ -243,14 +491,16 @@ namespace TNHTweaker_UI.BusinessLogic
                 instanceWithProperty?.GetType().GetProperty(customPropertyName)?.SetValue(instanceWithProperty, value);
         }
 
-        private void SetProperty<T>(ref T instance, string property, object value)
+        /// <summary>
+        /// Find any properties of the given type <typeparamref name="T"/> that are annotated with <see cref="PropertyNameAttribute"/>. and put those in a mapping dictionary.
+        /// If a property of the given type <typeparamref name="T"/> does not have a <see cref="PropertyNameAttribute"/> its original name will be used instead.
+        /// This method does NOT recurse into object type properties!
+        /// </summary>
+        /// <typeparam name="T">The type to find the custom property names for if any.</typeparam>
+        /// <returns>A <see cref="Dictionary{TKey,TValue}"/> that holds the custom name of any, and the actually used property name in the model.</returns>
+        private Dictionary<string, string> FindCustomProperties<T>()
         {
-            instance.GetType().GetProperty(property)?.SetValue(instance, value);
-        }
-
-        private Dictionary<string, string> FindCustomProperties(Type type)
-        {
-            var properties = type.GetProperties();
+            var properties = typeof(T).GetProperties();
             var propertiesDictionary = new Dictionary<string, string>();
             foreach (var property in properties)
             {
@@ -261,7 +511,10 @@ namespace TNHTweaker_UI.BusinessLogic
             return propertiesDictionary;
         }
 
-        private void FillEnumDirectionary()
+        /// <summary>
+        /// Fill the different types of Enum's that are used for specific properties in the character file.
+        /// </summary>
+        private void FillEnumDictionary()
         {
             _propertyToEnumDictionary.Add("Category", typeof(ItemCategory));
             _propertyToEnumDictionary.Add("Eras", typeof(EraType));
@@ -281,6 +534,8 @@ namespace TNHTweaker_UI.BusinessLogic
             _propertyToEnumDictionary.Add("ThrownTypes", typeof(ThrownType));
             _propertyToEnumDictionary.Add("ThrownDamageTypes", typeof(ThrownDamageType));
             _propertyToEnumDictionary.Add("Type", typeof(SpawnType));
+            _propertyToEnumDictionary.Add("TurretType", typeof(TurretType));
+            _propertyToEnumDictionary.Add("Encryption", typeof(EncryptionType));
         }
     }
 }

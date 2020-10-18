@@ -136,6 +136,6 @@ namespace TNHTweaker_UI.Models
         /// Definition of the holds, supplies and patrols.
         /// NOTE: Generally only one <see cref="ProgressionDefinition"/> is actually used.
         /// </summary>
-        public IList<ProgressionDefinition> Progressions { get; set; }
+        public IList<ProgressionDefinition> Progressions { get; set; } = new List<ProgressionDefinition>();
     }
 }
