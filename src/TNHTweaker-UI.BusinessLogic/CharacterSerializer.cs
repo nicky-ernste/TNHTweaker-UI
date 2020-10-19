@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using TNHTweaker_UI.BusinessLogic.Interfaces;
 using TNHTweaker_UI.Models;
 using TNHTweaker_UI.Models.Attributes;
@@ -29,7 +31,7 @@ namespace TNHTweaker_UI.BusinessLogic
             //Filter out empty lines and lines that serve as comments.
             var filteredCharacterDefinition = characterDefinition.Where(line => !string.IsNullOrEmpty(line.Trim()) && !line.Trim().StartsWith("#")).ToArray();
             var characterInfo = new CharacterInfo();
-            var characterBaseProperties = FindCustomProperties<CharacterInfo>();
+            var characterBaseProperties = FindCustomProperties(typeof(CharacterInfo));
 
             for (var lineIndex = 0; lineIndex < filteredCharacterDefinition.Length; lineIndex++)
             {
@@ -45,7 +47,7 @@ namespace TNHTweaker_UI.BusinessLogic
                 if ((line.Contains("Weapon_") && line.EndsWith("{")) || (line.Contains("Item_") && line.EndsWith("{")))
                 {
                     //Stepping into weapon definitions.
-                    var weaponDefinitionBaseProperties = FindCustomProperties<WeaponDefinition>();
+                    var weaponDefinitionBaseProperties = FindCustomProperties(typeof(WeaponDefinition));
                     var property = line.Split('=')[0]?.TrimEnd('{');
                     var weaponDefinition = new WeaponDefinition();
                     var keepReading = true;
@@ -72,7 +74,7 @@ namespace TNHTweaker_UI.BusinessLogic
                         if (indentCount == 2)
                         {
                             //Inside array of table definitions.
-                            var objectTableDefinitionsBaseProperties = FindCustomProperties<ObjectTableDefinition>();
+                            var objectTableDefinitionsBaseProperties = FindCustomProperties(typeof(ObjectTableDefinition));
                             var tableDefinition = new ObjectTableDefinition();
                             var keepReadingTableDef = true;
                             for (var tableDefIndex = innerLineIndex + 1; keepReadingTableDef; tableDefIndex++)
@@ -130,7 +132,7 @@ namespace TNHTweaker_UI.BusinessLogic
                         if (indentCount == 2)
                         {
                             //Inside array of pool entries.
-                            var poolEntryBaseProperties = FindCustomProperties<PoolEntry>();
+                            var poolEntryBaseProperties = FindCustomProperties(typeof(PoolEntry));
                             var poolEntry = new PoolEntry();
                             var keepReadingPoolEntry = true;
                             var entryIndentCount = 0;
@@ -155,7 +157,7 @@ namespace TNHTweaker_UI.BusinessLogic
                                 if (entryIndentCount == 1)
                                 {
                                     //Stepping inside of table definition.
-                                    var objectTableDefinitionsBaseProperties = FindCustomProperties<ObjectTableDefinition>();
+                                    var objectTableDefinitionsBaseProperties = FindCustomProperties(typeof(ObjectTableDefinition));
                                     var tableDefinition = new ObjectTableDefinition();
                                     var keepReadingTableDef = true;
                                     for (var tableDefIndex = entryIndex + 1; keepReadingTableDef; tableDefIndex++)
@@ -218,7 +220,7 @@ namespace TNHTweaker_UI.BusinessLogic
                         if (indentCount == 2)
                         {
                             //Inside array of levels.
-                            var levelEntryBaseProperties = FindCustomProperties<LevelEntry>();
+                            var levelEntryBaseProperties = FindCustomProperties(typeof(LevelEntry));
                             var levelEntry = new LevelEntry();
                             var keepReadingLevelEntry = true;
                             var entryIndentCount = 0;
@@ -243,7 +245,7 @@ namespace TNHTweaker_UI.BusinessLogic
 
                                 if (entryIndentCount == 1 && (entryLine.Equals("TakeChallenge{") || entryLine.Equals("SupplyChallenge{")))
                                 {
-                                    var challengeBaseProperties = FindCustomProperties<TakeSupplyChallenge>();
+                                    var challengeBaseProperties = FindCustomProperties(typeof(TakeSupplyChallenge));
                                     var challenge = new TakeSupplyChallenge();
                                     var challengeProperty = entryLine.TrimEnd('{');
                                     var keepReadingChallenge = true;
@@ -291,7 +293,7 @@ namespace TNHTweaker_UI.BusinessLogic
                                         }
                                         if (holdChallengeIndentCount == 2)
                                         {
-                                            var phaseBaseProperties = FindCustomProperties<PhaseDefinition>();
+                                            var phaseBaseProperties = FindCustomProperties(typeof(PhaseDefinition));
                                             var phaseDefinition = new PhaseDefinition();
                                             var keepReadingPhase = true;
                                             for (var phaseIndex = holdChallengeIndex + 1; keepReadingPhase; phaseIndex++)
@@ -340,7 +342,7 @@ namespace TNHTweaker_UI.BusinessLogic
                                         }
                                         if (patrolChallengeIndentCount == 2)
                                         {
-                                            var patrolBaseProperties = FindCustomProperties<PatrolDefinition>();
+                                            var patrolBaseProperties = FindCustomProperties(typeof(PatrolDefinition));
                                             var patrolDefinition = new PatrolDefinition();
                                             var keepReadingPatrol = true;
                                             for (var patrolIndex = patrolChallengeIndex + 1; keepReadingPatrol; patrolIndex++)
@@ -389,7 +391,7 @@ namespace TNHTweaker_UI.BusinessLogic
                                         }
                                         if (trapsChallengeIndentCount == 2)
                                         {
-                                            var trapBaseProperties = FindCustomProperties<TrapDefinition>();
+                                            var trapBaseProperties = FindCustomProperties(typeof(TrapDefinition));
                                             var trapDefinition = new TrapDefinition();
                                             var keepReadingTrap = true;
                                             for (var trapIndex = trapsChallengeIndex + 1; keepReadingTrap; trapIndex++)
@@ -430,7 +432,13 @@ namespace TNHTweaker_UI.BusinessLogic
 
         public string WriteCharacterToString(CharacterInfo character)
         {
-            return string.Empty;
+            if (character == null)
+                return string.Empty;
+            var sb = new StringBuilder();
+            var charInfoBaseProperties = FindCustomPropertiesReverse(typeof(CharacterInfo));
+            WriteProperties(ref sb, character, charInfoBaseProperties);
+
+            return sb.ToString();
         }
 
         /// <summary>
@@ -498,9 +506,9 @@ namespace TNHTweaker_UI.BusinessLogic
         /// </summary>
         /// <typeparam name="T">The type to find the custom property names for if any.</typeparam>
         /// <returns>A <see cref="Dictionary{TKey,TValue}"/> that holds the custom name of any, and the actually used property name in the model.</returns>
-        private Dictionary<string, string> FindCustomProperties<T>()
+        private Dictionary<string, string> FindCustomProperties(Type objectType)
         {
-            var properties = typeof(T).GetProperties();
+            var properties = objectType.GetProperties();
             var propertiesDictionary = new Dictionary<string, string>();
             foreach (var property in properties)
             {
@@ -509,6 +517,119 @@ namespace TNHTweaker_UI.BusinessLogic
             }
 
             return propertiesDictionary;
+        }
+
+        /// <summary>
+        /// Find any properties of the given type <typeparamref name="T"/> that are annotated with <see cref="PropertyNameAttribute"/>. and put those in a mapping dictionary.
+        /// The mappings will be in reverse of what <see cref="FindCustomProperties{T}"/> returns.
+        /// If a property of the given type <typeparamref name="T"/> does not have a <see cref="PropertyNameAttribute"/> its original name will be used instead.
+        /// This method does NOT recurse into object type properties!
+        /// </summary>
+        /// <typeparam name="T">The type to find the custom property names for if any.</typeparam>
+        /// <returns>A <see cref="Dictionary{TKey,TValue}"/> that holds the custom name of any, and the actually used property name in the model.</returns>
+        private Dictionary<string, string> FindCustomPropertiesReverse(Type objectType)
+        {
+            var customProps = FindCustomProperties(objectType);
+            return customProps.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
+        }
+
+        private void WriteProperties(ref StringBuilder sb, object objectToWrite, Dictionary<string, string> customProperties)
+        {
+            var properties = objectToWrite.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                customProperties.TryGetValue(property.Name, out var customPropertyName);
+                if (string.IsNullOrEmpty(customPropertyName))
+                {
+                    Console.WriteLine($"The property \"{property}\" was not found in the dictionary.");
+                    return; //Property not found in dictionary.
+                }
+
+                switch (Type.GetTypeCode(property.PropertyType))
+                {
+                    case TypeCode.Int32:
+                        var intValue = (int)property.GetValue(objectToWrite);
+
+                        if (customPropertyName == "@AdditionalSupplyPoints" && intValue == 0) //BUG VERY SENSITIVE FOR FILE FORMAT CHANGES!
+                            break; //Skip empty additional supply points.
+                        if (property.PropertyType.IsEnum)
+                        {
+                            if (property.PropertyType == typeof(CharacterGroup))
+                            {
+                                sb.AppendLine($"{customPropertyName}={intValue}");
+                                break;
+                            }
+
+                            sb.AppendLine(((int)property.GetValue(objectToWrite)) == 0
+                                ? $"{customPropertyName}="
+                                : $"{customPropertyName}={property.GetValue(objectToWrite)}");
+                        }
+                        else
+                            sb.AppendLine($"{customPropertyName}={intValue}"); //Write the int normally.
+                        break;
+                    case TypeCode.Single:
+                        var decimalValue = (float)property.GetValue(objectToWrite);
+                        var stringValue = decimalValue.ToString(CultureInfo.InvariantCulture).Replace(',', '.');
+                        sb.AppendLine($"{customPropertyName}={stringValue}"); //Write the modified float.
+                        break;
+                    case TypeCode.String:
+                        sb.AppendLine($"{customPropertyName}={property.GetValue(objectToWrite)}");
+                        break;
+                    case TypeCode.Boolean:
+                        var boolValue = (bool)property.GetValue(objectToWrite);
+                        sb.AppendLine($"{customPropertyName}={(boolValue ? "true" : "false")}");
+                        break;
+                    case TypeCode.Object:
+                        //Go deeper
+                        if (property.PropertyType == typeof(object[]))
+                        {
+                            sb.AppendLine($"{customPropertyName}[]");
+                            continue; //Skip object arrays because all object arrays should be defined as a list.
+                        }
+
+                        if (property.PropertyType == typeof(string[]))
+                        {
+                            var stringArray = (string[])property.GetValue(objectToWrite);
+                            if (stringArray.Length == 0)
+                            {
+                                sb.AppendLine($"{customPropertyName}[]");
+                                continue; //Skip empty string arrays
+                            }
+
+                            sb.AppendLine($"{customPropertyName}={string.Join(",", stringArray)}");
+                            break;
+                        }
+
+                        if (!string.IsNullOrEmpty(property.PropertyType.FullName) && property.PropertyType.FullName.Contains("List"))
+                        {
+                            if (!(property.GetValue(objectToWrite) is IEnumerable<object> list) || !list.Any())
+                            {
+                                sb.AppendLine($"{customPropertyName}[]");
+                                continue; //Skip empty lists.
+                            }
+
+                            sb.AppendLine($"{customPropertyName}["); //Start new array definition.
+                            var listType = list.GetType().GetGenericArguments()[0];
+                            foreach (var o in list)
+                            {
+                                var customPropertiesForListObject = FindCustomPropertiesReverse(listType);
+                                sb.AppendLine("{"); //Start new object definition.
+                                WriteProperties(ref sb, o, customPropertiesForListObject); //Recursive entry.
+                                sb.AppendLine("}"); //Close object.
+                            }
+
+                            sb.AppendLine("]"); //Close array.
+                            break;
+                        }
+
+                        var customPropertiesForInnerObject = FindCustomPropertiesReverse(property.PropertyType);
+                        var innerObject = property.GetValue(objectToWrite);
+                        sb.AppendLine($"{customPropertyName}{{"); //Start new object definition.
+                        WriteProperties(ref sb, innerObject, customPropertiesForInnerObject); //Recursive entry.
+                        sb.AppendLine("}"); //Close object.
+                        break;
+                }
+            }
         }
 
         /// <summary>

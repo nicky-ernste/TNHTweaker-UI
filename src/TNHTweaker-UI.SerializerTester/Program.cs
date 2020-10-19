@@ -11,6 +11,7 @@ namespace TNHTweaker_UI.SerializerTester
         {
             Console.WriteLine("Reading character file");
             var filePath = ".\\character.txt";
+            var writePath = ".\\exportedCharacter.txt";
             if (!File.Exists(filePath))
             {
                 Console.WriteLine("Cannot find the character.txt file in the base directory.");
@@ -19,6 +20,9 @@ namespace TNHTweaker_UI.SerializerTester
             }
 
             var characterText = await File.ReadAllLinesAsync(filePath);
+            //var filteredCharacterDefinition = characterText.Where(line => !string.IsNullOrEmpty(line.Trim()) && !line.Trim().StartsWith("#")).ToArray();
+            //await File.WriteAllTextAsync(".\\normalizedCharacter.txt", string.Join("\n", filteredCharacterDefinition));
+
             var serializer = new CharacterSerializer();
             var character = serializer.ReadCharacterFromString(characterText);
 
@@ -26,6 +30,13 @@ namespace TNHTweaker_UI.SerializerTester
             {
                 Console.WriteLine($"Parsed character: {character.DisplayName}");
                 Console.WriteLine(character.Description);
+            }
+
+            var charString = serializer.WriteCharacterToString(character);
+            if (!string.IsNullOrEmpty(charString))
+            {
+                Console.WriteLine($"Writing character to {writePath}");
+                await File.WriteAllTextAsync(writePath, charString);
             }
 
             Console.WriteLine("Press any key to exit.");
