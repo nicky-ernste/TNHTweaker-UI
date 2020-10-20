@@ -37,70 +37,56 @@ namespace TNHTweaker_UI.BusinessLogic
             {
                 //Base character definition.
                 var line = filteredCharacterDefinition[lineIndex];
-                if (line.Contains("="))
-                {
-                    //Line is a statement
-                    var lineSplit = line.Split('=');
-                    FillInProperty(ref characterInfo, lineSplit[0], lineSplit[1], characterBaseProperties);
-                }
+                FillInPropertyIfStatement(line, ref characterInfo, characterBaseProperties);
 
-                if ((line.Contains("Weapon_") && line.EndsWith("{")) || (line.Contains("Item_") && line.EndsWith("{")))
+                if (line.Contains("Weapon_") && line.EndsWith("{") || line.Contains("Item_") && line.EndsWith("{"))
                 {
                     //Stepping into weapon definitions.
                     var weaponDefinitionBaseProperties = FindCustomProperties(typeof(WeaponDefinition));
                     var property = line.Split('=')[0]?.TrimEnd('{');
                     var weaponDefinition = new WeaponDefinition();
-                    var keepReading = true;
-                    var indentCount = 0;
+                    var keepReadingWeaponDefinition = true;
+                    var weaponDefinitionIndentCount = 0;
 
-                    for (var innerLineIndex = lineIndex + 1; keepReading; innerLineIndex++)
+                    for (var weaponDefinitionIndex = lineIndex + 1; keepReadingWeaponDefinition; weaponDefinitionIndex++)
                     {
-                        var innerLine = filteredCharacterDefinition[innerLineIndex].Trim();
-                        if (innerLine.Equals("{") || innerLine.EndsWith("["))
-                            indentCount++;
-                        if (innerLine.Equals("}") || innerLine.Equals("]"))
+                        var weaponDefinitionLine = filteredCharacterDefinition[weaponDefinitionIndex].Trim();
+                        if (weaponDefinitionLine.Equals("{") || weaponDefinitionLine.EndsWith("["))
+                            weaponDefinitionIndentCount++;
+                        if (weaponDefinitionLine.Equals("}") || weaponDefinitionLine.Equals("]"))
                         {
-                            if (indentCount > 0)
-                                indentCount--;
+                            if (weaponDefinitionIndentCount > 0)
+                                weaponDefinitionIndentCount--;
                             else
                             {
                                 //Jump out of this section.
-                                lineIndex = innerLineIndex - 1;
+                                lineIndex = weaponDefinitionIndex - 1;
                                 FillInProperty(ref characterInfo, property, weaponDefinition, characterBaseProperties);
-                                keepReading = false;
+                                keepReadingWeaponDefinition = false;
                             }
                         }
 
-                        if (indentCount == 2)
+                        if (weaponDefinitionIndentCount == 2)
                         {
                             //Inside array of table definitions.
                             var objectTableDefinitionsBaseProperties = FindCustomProperties(typeof(ObjectTableDefinition));
                             var tableDefinition = new ObjectTableDefinition();
                             var keepReadingTableDef = true;
-                            for (var tableDefIndex = innerLineIndex + 1; keepReadingTableDef; tableDefIndex++)
+                            for (var tableDefIndex = weaponDefinitionIndex + 1; keepReadingTableDef; tableDefIndex++)
                             {
                                 var tableDefLine = filteredCharacterDefinition[tableDefIndex].Trim();
                                 if (tableDefLine.Equals("}"))
                                 {
                                     weaponDefinition.TableDefs.Add(tableDefinition);
-                                    innerLineIndex = tableDefIndex - 1; //Skip the lines we just read.
+                                    weaponDefinitionIndex = tableDefIndex - 1; //Skip the lines we just read.
                                     keepReadingTableDef = false;
                                 }
 
-                                if (tableDefLine.Contains("="))
-                                {
-                                    //Line is a statement
-                                    var lineSplit = tableDefLine.Split('=');
-                                    FillInProperty(ref tableDefinition, lineSplit[0], lineSplit[1], objectTableDefinitionsBaseProperties);
-                                }
+                                FillInPropertyIfStatement(tableDefLine, ref tableDefinition, objectTableDefinitionsBaseProperties);
                             }
                         }
-                        if (innerLine.Contains("="))
-                        {
-                            //Line is a statement
-                            var lineSplit = innerLine.Split('=');
-                            FillInProperty(ref weaponDefinition, lineSplit[0], lineSplit[1], weaponDefinitionBaseProperties);
-                        }
+
+                        FillInPropertyIfStatement(weaponDefinitionLine, ref weaponDefinition, weaponDefinitionBaseProperties);
                     }
                 }
 
@@ -169,21 +155,12 @@ namespace TNHTweaker_UI.BusinessLogic
                                             entryIndex = tableDefIndex - 1; //Skip the lines we just read.
                                             keepReadingTableDef = false;
                                         }
-                                        if (tableDefLine.Contains("="))
-                                        {
-                                            //Line is a statement
-                                            var lineSplit = tableDefLine.Split('=');
-                                            FillInProperty(ref tableDefinition, lineSplit[0], lineSplit[1], objectTableDefinitionsBaseProperties);
-                                        }
+
+                                        FillInPropertyIfStatement(tableDefLine, ref tableDefinition, objectTableDefinitionsBaseProperties);
                                     }
                                 }
 
-                                if (entryLine.Contains("="))
-                                {
-                                    //Line is a statement.
-                                    var lineSplit = entryLine.Split('=');
-                                    FillInProperty(ref poolEntry, lineSplit[0], lineSplit[1], poolEntryBaseProperties);
-                                }
+                                FillInPropertyIfStatement(entryLine, ref poolEntry, poolEntryBaseProperties);
                             }
                         }
                     }
@@ -259,12 +236,8 @@ namespace TNHTweaker_UI.BusinessLogic
                                             FillInProperty(ref levelEntry, challengeProperty, challenge, levelEntryBaseProperties);
                                             keepReadingChallenge = false;
                                         }
-                                        if (challengeLine.Contains("="))
-                                        {
-                                            //Line is a statement.
-                                            var lineSplit = challengeLine.Split('=');
-                                            FillInProperty(ref challenge, lineSplit[0], lineSplit[1], challengeBaseProperties);
-                                        }
+
+                                        FillInPropertyIfStatement(challengeLine, ref challenge, challengeBaseProperties);
                                     }
                                 }
 
@@ -306,12 +279,8 @@ namespace TNHTweaker_UI.BusinessLogic
                                                     holdChallenge.Phases.Add(phaseDefinition);
                                                     keepReadingPhase = false;
                                                 }
-                                                if (phaseLine.Contains("="))
-                                                {
-                                                    //Line is a statement.
-                                                    var lineSplit = phaseLine.Split('=');
-                                                    FillInProperty(ref phaseDefinition, lineSplit[0], lineSplit[1], phaseBaseProperties);
-                                                }
+
+                                                FillInPropertyIfStatement(phaseLine, ref phaseDefinition, phaseBaseProperties);
                                             }
                                         }
                                     }
@@ -355,12 +324,8 @@ namespace TNHTweaker_UI.BusinessLogic
                                                     patrolChallenge.Patrols.Add(patrolDefinition);
                                                     keepReadingPatrol = false;
                                                 }
-                                                if (patrolLine.Contains("="))
-                                                {
-                                                    //Line is a statement.
-                                                    var lineSplit = patrolLine.Split('=');
-                                                    FillInProperty(ref patrolDefinition, lineSplit[0], lineSplit[1], patrolBaseProperties);
-                                                }
+
+                                                FillInPropertyIfStatement(patrolLine, ref patrolDefinition, patrolBaseProperties);
                                             }
                                         }
                                     }
@@ -404,23 +369,14 @@ namespace TNHTweaker_UI.BusinessLogic
                                                     trapsChallenge.Traps.Add(trapDefinition);
                                                     keepReadingTrap = false;
                                                 }
-                                                if (trapLine.Contains("="))
-                                                {
-                                                    //Line is a statement.
-                                                    var lineSplit = trapLine.Split('=');
-                                                    FillInProperty(ref trapDefinition, lineSplit[0], lineSplit[1], trapBaseProperties);
-                                                }
+
+                                                FillInPropertyIfStatement(trapLine, ref trapDefinition, trapBaseProperties);
                                             }
                                         }
                                     }
                                 }
 
-                                if (entryLine.Contains("="))
-                                {
-                                    //Line is a statement.
-                                    var lineSplit = entryLine.Split('=');
-                                    FillInProperty(ref levelEntry, lineSplit[0], lineSplit[1], levelEntryBaseProperties);
-                                }
+                                FillInPropertyIfStatement(entryLine, ref levelEntry, levelEntryBaseProperties);
                             }
                         }
                     }
@@ -436,7 +392,7 @@ namespace TNHTweaker_UI.BusinessLogic
                 return string.Empty;
             var sb = new StringBuilder();
             var charInfoBaseProperties = FindCustomPropertiesReverse(typeof(CharacterInfo));
-            WriteProperties(ref sb, character, charInfoBaseProperties);
+            WriteObjectToText(ref sb, character, charInfoBaseProperties);
 
             return sb.ToString();
         }
@@ -470,6 +426,7 @@ namespace TNHTweaker_UI.BusinessLogic
                     return;
                 }
 
+                // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault Will add more cases if needed.
                 switch (Type.GetTypeCode(instanceWithProperty.GetType().GetProperty(customPropertyName)?.PropertyType))
                 {
                     case TypeCode.Int32:
@@ -486,12 +443,14 @@ namespace TNHTweaker_UI.BusinessLogic
                         break;
                     case TypeCode.Boolean:
                         var boolValue = bool.Parse(stringValue);
-                        instanceWithProperty?.GetType().GetProperty(customPropertyName)
-                            ?.SetValue(instanceWithProperty, boolValue);
+                        instanceWithProperty?.GetType().GetProperty(customPropertyName)?.SetValue(instanceWithProperty, boolValue);
                         break;
                     case TypeCode.Object:
                         if (property == "IDOverride")
                             instanceWithProperty?.GetType().GetProperty(customPropertyName)?.SetValue(instanceWithProperty, stringValue.Split(','));
+                        break;
+                    default:
+                        Console.WriteLine($"WARNING Could not fill in property of type: {instanceWithProperty.GetType().GetProperty(customPropertyName)?.PropertyType} For property: {property}");
                         break;
                 }
             }
@@ -500,11 +459,28 @@ namespace TNHTweaker_UI.BusinessLogic
         }
 
         /// <summary>
-        /// Find any properties of the given type <typeparamref name="T"/> that are annotated with <see cref="PropertyNameAttribute"/>. and put those in a mapping dictionary.
-        /// If a property of the given type <typeparamref name="T"/> does not have a <see cref="PropertyNameAttribute"/> its original name will be used instead.
+        /// Fills in the property on <paramref name="objectToFill"/> that is contained in <paramref name="textLine"/>, if <paramref name="textLine"/> represents a statement.
+        /// </summary>
+        /// <typeparam name="T">The type of object the fill a property on.</typeparam>
+        /// <param name="textLine">The line of text to examine.</param>
+        /// <param name="objectToFill">The instance of <typeparamref name="T"/> to fill a property on.</param>
+        /// <param name="customProperties">A <see cref="Dictionary{TKey,TValue}"/> that holds any custom property names for <paramref name="objectToFill"/>.</param>
+        void FillInPropertyIfStatement<T>(string textLine, ref T objectToFill, Dictionary<string, string> customProperties)
+        {
+            if (!textLine.Contains("="))
+                return;
+
+            //Line is a statement
+            var lineSplit = textLine.Split('=');
+            FillInProperty(ref objectToFill, lineSplit[0], lineSplit[1], customProperties);
+        }
+
+        /// <summary>
+        /// Find any properties of the given type <paramref name="objectType"/> that are annotated with <see cref="PropertyNameAttribute"/>. and put those in a mapping dictionary.
+        /// If a property of the given type <paramref name="objectType"/> does not have a <see cref="PropertyNameAttribute"/> its original name will be used instead.
         /// This method does NOT recurse into object type properties!
         /// </summary>
-        /// <typeparam name="T">The type to find the custom property names for if any.</typeparam>
+        /// <param name="objectType">The type to find the custom property names for if any.</param>
         /// <returns>A <see cref="Dictionary{TKey,TValue}"/> that holds the custom name of any, and the actually used property name in the model.</returns>
         private Dictionary<string, string> FindCustomProperties(Type objectType)
         {
@@ -520,12 +496,12 @@ namespace TNHTweaker_UI.BusinessLogic
         }
 
         /// <summary>
-        /// Find any properties of the given type <typeparamref name="T"/> that are annotated with <see cref="PropertyNameAttribute"/>. and put those in a mapping dictionary.
-        /// The mappings will be in reverse of what <see cref="FindCustomProperties{T}"/> returns.
-        /// If a property of the given type <typeparamref name="T"/> does not have a <see cref="PropertyNameAttribute"/> its original name will be used instead.
+        /// Find any properties of the given type <paramref name="objectType"/> that are annotated with <see cref="PropertyNameAttribute"/>. and put those in a mapping dictionary.
+        /// The mappings will be in reverse of what <see cref="FindCustomProperties"/> returns.
+        /// If a property of the given type <paramref name="objectType"/> does not have a <see cref="PropertyNameAttribute"/> its original name will be used instead.
         /// This method does NOT recurse into object type properties!
         /// </summary>
-        /// <typeparam name="T">The type to find the custom property names for if any.</typeparam>
+        /// <param name="objectType">The type to find the custom property names for if any.</param>
         /// <returns>A <see cref="Dictionary{TKey,TValue}"/> that holds the custom name of any, and the actually used property name in the model.</returns>
         private Dictionary<string, string> FindCustomPropertiesReverse(Type objectType)
         {
@@ -533,7 +509,14 @@ namespace TNHTweaker_UI.BusinessLogic
             return customProps.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
         }
 
-        private void WriteProperties(ref StringBuilder sb, object objectToWrite, Dictionary<string, string> customProperties)
+        /// <summary>
+        /// Writes properties of the given <see cref="objectToWrite"/> to texts in the format of the custom character file.
+        /// This is a recursive method that maps out all sub objects in the given <paramref name="objectToWrite"/>.
+        /// </summary>
+        /// <param name="sb">A reference to a <see cref="StringBuilder"/> that is used to build the string for the custom character.</param>
+        /// <param name="objectToWrite">The instance of <paramref name="objectToWrite"/> that needs to be written to text format..</param>
+        /// <param name="customProperties">A <see cref="Dictionary{TKey,TValue}"/> that holds any custom property names for <paramref name="objectToWrite"/>.</param>
+        private void WriteObjectToText(ref StringBuilder sb, object objectToWrite, Dictionary<string, string> customProperties)
         {
             var properties = objectToWrite.GetType().GetProperties();
             foreach (var property in properties)
@@ -545,6 +528,7 @@ namespace TNHTweaker_UI.BusinessLogic
                     return; //Property not found in dictionary.
                 }
 
+                // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault Will add more cases if needed.
                 switch (Type.GetTypeCode(property.PropertyType))
                 {
                     case TypeCode.Int32:
@@ -614,7 +598,7 @@ namespace TNHTweaker_UI.BusinessLogic
                             {
                                 var customPropertiesForListObject = FindCustomPropertiesReverse(listType);
                                 sb.AppendLine("{"); //Start new object definition.
-                                WriteProperties(ref sb, o, customPropertiesForListObject); //Recursive entry.
+                                WriteObjectToText(ref sb, o, customPropertiesForListObject); //Recursive entry.
                                 sb.AppendLine("}"); //Close object.
                             }
 
@@ -625,8 +609,11 @@ namespace TNHTweaker_UI.BusinessLogic
                         var customPropertiesForInnerObject = FindCustomPropertiesReverse(property.PropertyType);
                         var innerObject = property.GetValue(objectToWrite);
                         sb.AppendLine($"{customPropertyName}{{"); //Start new object definition.
-                        WriteProperties(ref sb, innerObject, customPropertiesForInnerObject); //Recursive entry.
+                        WriteObjectToText(ref sb, innerObject, customPropertiesForInnerObject); //Recursive entry.
                         sb.AppendLine("}"); //Close object.
+                        break;
+                    default:
+                        Console.WriteLine($"WARNING Could not write property type: {property.PropertyType} to text for property: {property.Name}");
                         break;
                 }
             }

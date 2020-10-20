@@ -7,6 +7,7 @@ namespace TNHTweaker_UI.SerializerTester
 {
     public class Program
     {
+        //TODO remove this console application when the WPF UI can read and write files.
         public static async Task Main(string[] args)
         {
             Console.WriteLine("Reading character file");
@@ -20,9 +21,6 @@ namespace TNHTweaker_UI.SerializerTester
             }
 
             var characterText = await File.ReadAllLinesAsync(filePath);
-            //var filteredCharacterDefinition = characterText.Where(line => !string.IsNullOrEmpty(line.Trim()) && !line.Trim().StartsWith("#")).ToArray();
-            //await File.WriteAllTextAsync(".\\normalizedCharacter.txt", string.Join("\n", filteredCharacterDefinition));
-
             var serializer = new CharacterSerializer();
             var character = serializer.ReadCharacterFromString(characterText);
 
