@@ -11,26 +11,26 @@ namespace TNHTweaker_UI.Models.Enums
         /// <summary>
         /// No specific limit on fire mode.
         /// </summary>
-        None = 0,
+        None = 1,
 
         /// <summary>
         /// Spawns semi automatic weapons.
         /// </summary>
-        SemiAuto = 1,
+        SemiAuto = 2,
 
         /// <summary>
         /// Spawns burst fire weapons.
         /// </summary>
-        Burst = 2,
+        Burst = 4,
 
         /// <summary>
         /// Spawns fully automatic weapons.
         /// </summary>
-        FullAuto = 4,
+        FullAuto = 8,
 
         /// <summary>
         /// Spawns single fire weapons.
         /// </summary>
-        SingleFire = 8
+        SingleFire = 16
     }
 }

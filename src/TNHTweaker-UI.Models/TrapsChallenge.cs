@@ -1,4 +1,4 @@
-﻿using TNHTweaker_UI.Models.Enums;
+﻿using System.Collections.Generic;
 
 namespace TNHTweaker_UI.Models
 {
@@ -7,19 +7,6 @@ namespace TNHTweaker_UI.Models
     /// </summary>
     public class TrapsChallenge
     {
-        /// <summary>
-        /// The type of traps that will be present.
-        /// </summary>
-        public TrapType Type { get; set; }
-
-        /// <summary>
-        /// The minimum amount of traps that will spawn.
-        /// </summary>
-        public int MinNumber { get; set; }
-
-        /// <summary>
-        /// The maximum amount of traps that will spawn.
-        /// </summary>
-        public int MaxNumber { get; set; }
+        public IList<TrapDefinition> Traps { get; set; } = new List<TrapDefinition>();
     }
 }

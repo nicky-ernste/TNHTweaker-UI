@@ -1,4 +1,5 @@
-﻿using TNHTweaker_UI.Models.Enums;
+﻿using TNHTweaker_UI.Models.Attributes;
+using TNHTweaker_UI.Models.Enums;
 
 namespace TNHTweaker_UI.Models
 {
@@ -63,19 +64,20 @@ namespace TNHTweaker_UI.Models
         /// <summary>
         /// Sets the team that spawned attackers will be on. Default is 1, and the players IFF is 0.
         /// </summary>
-        public int IFFUsed { get; set; } = 1;
+        [PropertyName("IFFUsed")]
+        public int IffUsed { get; set; } = 1;
 
         /// <summary>
         /// The chance that the enemies will throw a grenade at the player.
         /// Value between 0 and 1, which represents a percentage.
         /// </summary>
-        //TODO create a attribute for custom names, because an @ character is not allowed in variable names.
+        [PropertyName("@GrenadeChance")]
         public float GrenadeChance { get; set; }
 
         /// <summary>
         /// The type of grenade the enemies will throw at the player.
         /// </summary>
-        //TODO create a attribute for custom names, because an @ character is not allowed in variable names.
+        [PropertyName("@GrenadeType")]
         public string GrenadeType { get; set; }
     }
 }

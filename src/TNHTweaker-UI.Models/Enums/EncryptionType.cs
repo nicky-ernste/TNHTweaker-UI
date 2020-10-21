@@ -8,56 +8,56 @@
         /// <summary>
         /// Spawns static encryption types.
         /// </summary>
-        Static = 0,
+        Static = 1,
 
         /// <summary>
         /// Spawns hardened encryption types.
         /// </summary>
-        Hardened = 1,
+        Hardened = 2,
 
         /// <summary>
         /// Spawns swarm encryption types.
         /// </summary>
-        Swarm = 2,
+        Swarm = 4,
 
         /// <summary>
         /// Spawns recursive encryption types.
         /// </summary>
-        Recursive = 4,
+        Recursive = 8,
 
         /// <summary>
         /// Spawns stealth encryption types.
         /// </summary>
-        Stealth = 8,
+        Stealth = 16,
 
         /// <summary>
         /// Spawns agile encryption types.
         /// </summary>
-        Agile = 16,
+        Agile = 32,
 
         /// <summary>
         /// Spawns regenerative encryption types.
         /// </summary>
-        Regenerative = 32,
+        Regenerative = 64,
 
         /// <summary>
         /// Spawns polymorphic encryption types.
         /// </summary>
-        Polymorphic = 64,
+        Polymorphic = 128,
 
         /// <summary>
         /// Spawns cascading encryption types.
         /// </summary>
-        Cascading = 128,
+        Cascading = 256,
 
         /// <summary>
         /// Spawns orthagonal encryption types.
         /// </summary>
-        Orthagonal = 256,
+        Orthagonal = 512,
 
         /// <summary>
         /// Spawns refractive encryption types.
         /// </summary>
-        Refractive = 512
+        Refractive = 1024
     }
 }
