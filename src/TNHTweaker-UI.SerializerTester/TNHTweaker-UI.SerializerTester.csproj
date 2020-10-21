@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>TNHTweaker_UI.SerializerTester</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TNHTweaker-UI.BusinessLogic\TNHTweaker-UI.BusinessLogic.csproj" />
+    <ProjectReference Include="..\TNHTweaker-UI.Models\TNHTweaker-UI.Models.csproj" />
+  </ItemGroup>
+
+</Project>

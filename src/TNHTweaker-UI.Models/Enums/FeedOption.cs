@@ -11,31 +11,31 @@ namespace TNHTweaker_UI.Models.Enums
         /// <summary>
         /// No specific feeding option set.
         /// </summary>
-        None = 0,
+        None = 1,
 
         /// <summary>
         /// Spawns breach loaded weapons.
         /// </summary>
-        BreachLoad = 1,
+        BreachLoad = 2,
 
         /// <summary>
         /// Spawns weapons with internal magazines.
         /// </summary>
-        InternalMag = 2,
+        InternalMag = 4,
 
         /// <summary>
         /// Spawns weapons with external box magazines.
         /// </summary>
-        BoxMag = 4,
+        BoxMag = 8,
 
         /// <summary>
         /// Spawns weapons that are loaded with stripper clips or individual rounds.
         /// </summary>
-        StripperClip = 8,
+        StripperClip = 16,
 
         /// <summary>
         /// Spawns weapons that are loaded with an Enbloc clip.
         /// </summary>
-        EnblocClip = 16
+        EnblocClip = 32
     }
 }

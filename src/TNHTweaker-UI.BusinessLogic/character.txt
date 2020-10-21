@@ -1,0 +1,2239 @@
+#BASIC CHARACTER INFO
+DisplayName=Comrade Kolbasa
+Group=0
+StartingTokens=3
+ForceAllAgentWeapons=false
+Description=Is good description, da
+UsesPurchasePriceIncrement=true
+Has_Weapon_Primary=true
+Has_Weapon_Secondary=true
+Has_Weapon_Tertiary=false
+Has_Item_Primary=true
+Has_Item_Secondary=true
+Has_Item_Tertiary=true
+Has_Item_Shield=true
+
+
+
+#START OF PRIMARY STARTING WEAPON
+Weapon_Primary{
+  ListOverride[]
+  Num_Mags_SL_Clips=3
+  Num_Rounds=7
+  TableDefs[
+
+  	{
+          Icon=pistol.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Firearm
+          MinAmmoCapacity=1
+          MaxAmmoCapacity=20
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=Makarov,TT33
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=Colonial,TurnOfTheCentury
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=Real, Meme
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=None
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=BoltAction, Automatic, OpenBreach, LeverAction
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=SemiAuto, FullAuto
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=SingleFire
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=None
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=Russian, Stock
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=Pistol, Intermediate, FullPower, Exotic
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=None
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=Tactical
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=None
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=Russian, Stock, Bespoke
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=Health
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=None
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=Kinetic, Fire
+          Objs[]
+  	}
+  ]
+}
+#END OF PRIMARY STARTING WEAPON
+
+
+
+#START OF SECONDARY STARTING WEAPON
+Weapon_Secondary{
+  ListOverride[]
+  Num_Mags_SL_Clips=0
+  Num_Rounds=0
+  TableDefs[
+
+  	{
+          Icon=thumb.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=MeleeWeapon
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=BayonetMosin,BayonetAK,BayonetSVT40,FarmTool_Sickle
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+  	}
+  ]
+}
+#END OF SECONDARY STARTING WEAPON
+
+
+
+
+#START OF TERTIARY STARTING WEAPON (Unused)
+Weapon_Tertiary{
+  ListOverride[]
+  Num_Mags_SL_Clips=2
+  Num_Rounds=0
+  TableDefs[
+
+  	{
+          Icon=thumb.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Firearm
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=false
+          IDOverride=
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+  	}
+  ]
+}
+#END OF TERTIARY STARTING WEAPON
+
+
+
+
+
+#START OF PRIMARY STARTING ITEM
+Item_Primary{
+  ListOverride[]
+  Num_Mags_SL_Clips=0
+  Num_Rounds=0
+  TableDefs[
+
+  	{
+          Icon=thumb.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Explosive
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=Molotov
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+  	}
+  ]
+}
+#END OF PRIMARY STARTING ITEM
+
+
+
+
+
+
+#START OF SECONDARY STARTING ITEM
+Item_Secondary{
+  ListOverride[]
+  Num_Mags_SL_Clips=0
+  Num_Rounds=0
+  TableDefs[
+
+  	{
+          Icon=thumb.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Uncategorized
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=BackpackA
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+  	}
+  ]
+}
+#END OF SECONDARY STARTING ITEM
+
+
+
+
+
+#START OF TERTIARY STARTING ITEM
+Item_Tertiary{
+  ListOverride[]
+  Num_Mags_SL_Clips=0
+  Num_Rounds=0
+  TableDefs[
+
+  	{
+          Icon=thumb.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Tool
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=FlipzoLighter
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+  	}
+  ]
+}
+#END OF TERTIARY STARTING ITEM
+
+
+
+
+
+#START OF SHIELD ITEM
+Item_Shield{
+  ListOverride[]
+  Num_Mags_SL_Clips=0
+  Num_Rounds=0
+  TableDefs[
+
+  	{
+          Icon=thumb.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=MeleeWeapon
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=Shield_BallisticShield
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+  	}
+  ]
+}
+#END OF SHIELD ITEM
+
+
+
+
+
+#START OF EQUIPMENT POOLS
+EquipmentPool{
+  Entries[
+
+
+
+
+  #START OF PISTOL POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Firearm
+      TokenCost=1
+      TokenCost_Limited=1
+      MinLevelAppears=0
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=pistol.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Firearm
+          MinAmmoCapacity=5
+          MaxAmmoCapacity=200
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=GSh18,PL14
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+  #START OF HEALTH POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Consumable
+      TokenCost=1
+      TokenCost_Limited=1
+      MinLevelAppears=0
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=health.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Powerup
+          MinAmmoCapacity=0
+          MaxAmmoCapacity=0
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=PowerUpMeat_Health
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+
+  #START OF SMALL SMG TABLE
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Firearm
+      TokenCost=2
+      TokenCost_Limited=2
+      MinLevelAppears=0
+      MaxLevelAppears=2
+      Rarity=1
+
+      TableDef{
+          Icon=smg.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Firearm
+          MinAmmoCapacity=5
+          MaxAmmoCapacity=100
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=AEK919k,Gepard,PP91KEDR,VZ64Skorpion
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+  #START OF LARGE SMG TABLE
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Firearm
+      TokenCost=3
+      TokenCost_Limited=3
+      MinLevelAppears=1
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=smgbig.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Firearm
+          MinAmmoCapacity=5
+          MaxAmmoCapacity=100
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=PPBizon,PP2000,PPSh41
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+  #START OF SHOTGUN POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Firearm
+      TokenCost=2
+      TokenCost_Limited=2
+      MinLevelAppears=0
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=shotgun.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Firearm
+          MinAmmoCapacity=0
+          MaxAmmoCapacity=13
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=Toz106,Saiga12k,MP155k,KS23,MTs255
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+  #START OF LOW CAPACITY RIFLES
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Firearm
+      TokenCost=3
+      TokenCost_Limited=3
+      MinLevelAppears=1
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=rifle.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Firearm
+          MinAmmoCapacity=3
+          MaxAmmoCapacity=21
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=AK101,AK12,AK12Prototype,AK74N,AKM,AKMTactical,ASVAL,AKS74U,AKS74UTactical,Malyuk,SKSClassic,SKSModern,VSSVintorez
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+
+  #START OF HIGH CAPACITY RIFLES
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Firearm
+      TokenCost=4
+      TokenCost_Limited=4
+      MinLevelAppears=2
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=bigrifle.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Firearm
+          MinAmmoCapacity=25
+          MaxAmmoCapacity=41
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=AK101,AK12,AK12Prototype,AK74N,AKM,AKMTactical,ASVAL,AKS74U,AKS74UTactical,Malyuk,VSSVintorez,SR3M
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+  #START OF MACHINE GUN POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Firearm
+      TokenCost=5
+      TokenCost_Limited=5
+      MinLevelAppears=3
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=machinegun.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Firearm
+          MinAmmoCapacity=5
+          MaxAmmoCapacity=200
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=DP28LMG,RPD
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+  #START OF BOLT ACTION POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Firearm
+      TokenCost=1
+      TokenCost_Limited=1
+      MinLevelAppears=0
+      MaxLevelAppears=2
+      Rarity=1
+
+      TableDef{
+          Icon=sniper.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Firearm
+          MinAmmoCapacity=1
+          MaxAmmoCapacity=30
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=Mosin91_30,MosinM38,SV98
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+  #START OF BATTLE RIFLE POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Firearm
+      TokenCost=2
+      TokenCost_Limited=2
+      MinLevelAppears=1
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=battlerifle.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Firearm
+          MinAmmoCapacity=1
+          MaxAmmoCapacity=20
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=SVT40,Dragonuv
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+  #START OF RUSSIAN SIGHTS POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Equipment
+      TokenCost=1
+      TokenCost_Limited=1
+      MinLevelAppears=1
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=sights.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Attachment
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=RailAdapterRussianToPicatinny,ReflexKobra,ReflexPK01VS,MagnifierPSO1
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+  #START OF PICCATINIY SIGHTS POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Equipment
+      TokenCost=1
+      TokenCost_Limited=1
+      MinLevelAppears=1
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=reflex.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Attachment
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=false
+          IDOverride=
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=Real
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=Reflex
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=Picatinny
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+
+  #START OF PICCATINIY SCOPES POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Equipment
+      TokenCost=1
+      TokenCost_Limited=1
+      MinLevelAppears=1
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=scope.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Attachment
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=false
+          IDOverride=
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=Real
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=Magnification
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=Picatinny
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+
+
+  #START OF SUPPRESSORS POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Equipment
+      TokenCost=1
+      TokenCost_Limited=1
+      MinLevelAppears=0
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=suppressor.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Attachment
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=false
+          IDOverride=
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=Real
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=Suppression
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=Muzzle
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+
+  #START OF MUZZLE BRAKES POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Equipment
+      TokenCost=1
+      TokenCost_Limited=1
+      MinLevelAppears=0
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=brake.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Attachment
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=false
+          IDOverride=
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=Real
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=RecoilMitigation
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=Muzzle
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+
+
+  #START OF BARREL EXTENDERS POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Equipment
+      TokenCost=1
+      TokenCost_Limited=1
+      MinLevelAppears=0
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=barrel.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Attachment
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=false
+          IDOverride=
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=Real
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=BarrelExtension
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=Muzzle
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+
+  #START OF BIPOD POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Equipment
+      TokenCost=1
+      TokenCost_Limited=1
+      MinLevelAppears=1
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=bipod.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Attachment
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=AttachableBipodA,MuzzleBipod
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+
+  #START OF RUSSIAN FOREGRIPS POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Equipment
+      TokenCost=1
+      TokenCost_Limited=1
+      MinLevelAppears=1
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=grip.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Attachment
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=AKForeB10,AKForeRomanian,AKForeShark
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+
+  #START OF LAUNCHER POOL
+  {
+      #Options: Firearm,Equipment,Consumable
+      Type=Equipment
+      TokenCost=1
+      TokenCost_Limited=1
+      MinLevelAppears=2
+      MaxLevelAppears=99
+      Rarity=1
+
+      TableDef{
+          Icon=launcher.png
+          #Options: Uncategorized,Firearm,Magazine,Clip,Cartridge,Attachment,SpeedLoader,Thrown,MeleeWeapon,Explosive,Powerup,Target,Tool,Toy,Firework,Ornament
+          Category=Attachment
+          MinAmmoCapacity=-1
+          MaxAmmoCapacity=-1
+          IsBlanked=false
+          SpawnsInSmallCase=false
+          SpawnsInLargeCase=false
+          UseIDListOverride=true
+          IDOverride=GP25_Classic,GP25_Picatinny
+          #Options: None,Colonial,WildWest,TurnOfTheCentury,WW1,WW2,PostWar,Modern,Futuristic,Medieval
+          Eras=
+          #Options: Real,GroundedFictional,SciFiFictional,Meme,MF,Holiday,TNH
+          Sets=
+          #Options: None,Pocket,Pistol,Compact,Carbine,FullSize,Bulky,Oversize
+          Sizes=
+          #Options: None,BreakAction,BoltAction,Revolver,PumpAction,LeverAction,Automatic,RollingBlock,OpenBreach,Preloaded,SingleActionRevolver
+          Actions=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          Modes=
+          #Options: None,SemiAuto,Burst,FullAuto,SingleFire
+          ExcludeModes=
+          #Options: None,BreachLoad,InternalMag,BoxMag,StripperClip,EnblocClip
+          Feedoptions=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountsAvailable=
+          #Options: None,Tiny,Pistol,Shotgun,Intermediate,FullPower,AntiMaterial,Ordnance,Exotic,Fire
+          RoundPowers=
+          #Options: None,IronSight,Magnification,Reflex,Suppression,Stock,Laser,Illumination,Grip,Decoration,RecoilMitigation,BarrelExtension,Adapter,Bayonet,ProjectileWeapon,Bipod
+          Features=
+          #Options: None,Tactical,Tool,Improvised,Medieval,Shield,PowerTool
+          MeleeStyles=
+          #Options: None,OneHanded,TwoHanded
+          MeleeHandedness=
+          #Options: None,Picatinny,Russian,Muzzle,Stock,Bespoke
+          MountTypes=
+          #Options: Health,QuadDamage,InfiniteAmmo,Invincibility,GhostMode,FarOutMeat,MuscleMeat,HomeTown,SnakeEye,Blort,Regen,Cyclops,WheredIGo,ChillOut,None
+          PowerupTypes=
+          #Options: None,ManualFuse,Pinned,Strange
+          ThrownTypes=
+          #Options: None,Kinetic,Explosive,Fire,Utility
+          ThrownDamageTypes=
+          Objs[]
+      }
+  }
+  #END OF POOL ENTRY
+
+
+
+
+
+  ]
+}
+#END OF EQUIPMENT POOLS
+
+
+
+
+
+
+
+#START OF PROGRESSIONS
+#NOTE: Generally only need one progression object, and then the levels[] are what determine each round of Take and Hold
+Progressions[
+{
+
+  #START OF LEVELS
+  Levels[
+
+  #START OF LEVEL 1
+  {
+      NumOverrideTokensForHold=5
+      @AdditionalSupplyPoints=1
+      @MaxBoxesSpawned=4
+      @MinBoxesSpawned=2
+      @MaxTokensPerSupply=2
+      @MinTokensPerSupply=1
+      @BoxTokenChance=0.5
+
+      TakeChallenge{
+          #Options: SMG,FLAK,Machinegun,Flamethrower,Suppression
+          TurretType=SMG
+          NumTurrets=0
+          GID=M_Swat_Scout
+          NumGuards=2
+          IFFUsed=1
+      }
+
+      HoldChallenge{
+          Phases[
+
+          {
+              #Options: Static,Hardened,Swarm,Recursive,Stealth,Agile,Regenerative,Polymorphic,Cascading,Orthagonal,Refractive
+              Encryption=Static
+              EType=M_Swat_Scout
+              LType=M_Swat_Scout
+              MinTargets=0
+              MaxTargets=0
+              MinEnemies=3
+              MaxEnemies=4
+              SpawnCadence=13
+              MaxEnemiesAlive=8
+              MaxDirections=2
+              ScanTime=50
+              WarmUp=5
+              IFFUsed=1
+              @GrenadeChance=0.75
+              @GrenadeType=Sosiggrenade_Flash
+          }
+
+          ]
+      }
+
+      SupplyChallenge{
+          #Options: SMG,FLAK,Machinegun,Flamethrower,Suppression
+          TurretType=SMG
+          NumTurrets=0
+          GID=M_Swat_Scout
+          NumGuards=2
+          IFFUsed=1
+      }
+
+      PatrolChallenge{
+          Patrols[
+
+          {
+              EType=M_Swat_Scout
+              LType=M_Swat_Scout
+              PatrolSize=4
+              MaxPatrols=4
+              MaxPatrols_LimitedAmmo=4
+              TimeTilRegen=5
+              TimeTilRegen_LimitedAmmo=5
+              IFFUsed=1
+          }
+
+          ]
+      }
+
+      TrapsChallenge{
+          Traps[
+
+          {
+              #Options: Poppers
+              Type=Poppers
+              MinNumber=0
+              MaxNumber=0
+          }
+
+          ]
+      }
+
+  }
+  #END OF LEVEL 1
+
+
+
+
+
+  #START OF LEVEL 2
+  {
+      NumOverrideTokensForHold=5
+      @MaxBoxesSpawned=5
+      @MinBoxesSpawned=3
+      @MaxTokensPerSupply=2
+      @MinTokensPerSupply=1
+      @BoxTokenChance=0.5
+
+      TakeChallenge{
+          #Options: SMG,FLAK,Machinegun,Flamethrower,Suppression
+          TurretType=SMG
+          NumTurrets=0
+          GID=M_Swat_Scout
+          NumGuards=3
+          IFFUsed=1
+      }
+
+      HoldChallenge{
+          Phases[
+
+          {
+              #Options: Static,Hardened,Swarm,Recursive,Stealth,Agile,Regenerative,Polymorphic,Cascading,Orthagonal,Refractive
+              Encryption=Static
+              EType=M_Swat_Scout
+              LType=M_Swat_Riflewiener
+              MinTargets=3
+              MaxTargets=3
+              MinEnemies=2
+              MaxEnemies=3
+              SpawnCadence=15
+              MaxEnemiesAlive=8
+              MaxDirections=2
+              ScanTime=30
+              WarmUp=5
+              IFFUsed=1
+              @GrenadeChance=0.75
+              @GrenadeType=Sosiggrenade_Flash
+          }
+
+
+
+          {
+              #Options: Static,Hardened,Swarm,Recursive,Stealth,Agile,Regenerative,Polymorphic,Cascading,Orthagonal,Refractive
+              Encryption=Hardened
+              EType=M_Swat_Scout
+              LType=M_Swat_Riflewiener
+              MinTargets=3
+              MaxTargets=3
+              MinEnemies=4
+              MaxEnemies=4
+              SpawnCadence=15
+              MaxEnemiesAlive=8
+              MaxDirections=3
+              ScanTime=30
+              WarmUp=5
+              IFFUsed=1
+              @GrenadeChance=0.75
+              @GrenadeType=Sosiggrenade_Flash
+          }
+
+
+
+          ]
+      }
+
+      SupplyChallenge{
+          #Options: SMG,FLAK,Machinegun,Flamethrower,Suppression
+          TurretType=SMG
+          NumTurrets=0
+          GID=M_Swat_Scout
+          NumGuards=3
+          IFFUsed=1
+      }
+
+      PatrolChallenge{
+          Patrols[
+
+          {
+              EType=M_Swat_Scout
+              LType=M_Swat_Officer
+              PatrolSize=4
+              MaxPatrols=4
+              MaxPatrols_LimitedAmmo=4
+              TimeTilRegen=5
+              TimeTilRegen_LimitedAmmo=5
+              IFFUsed=1
+          }
+
+          ]
+      }
+
+      TrapsChallenge{
+          Traps[
+
+          {
+              #Options: Poppers
+              Type=Poppers
+              MinNumber=0
+              MaxNumber=0
+          }
+
+          ]
+      }
+
+  }
+  #END OF LEVEL 2
+
+
+
+
+
+  #START OF LEVEL 3
+  {
+      NumOverrideTokensForHold=5
+      @MaxBoxesSpawned=6
+      @MinBoxesSpawned=3
+      @MaxTokensPerSupply=3
+      @MinTokensPerSupply=1
+      @BoxTokenChance=0.5
+
+      TakeChallenge{
+          #Options: SMG,FLAK,Machinegun,Flamethrower,Suppression
+          TurretType=SMG
+          NumTurrets=0
+          GID=M_Swat_Officer
+          NumGuards=4
+          IFFUsed=1
+      }
+
+      HoldChallenge{
+          Phases[
+
+          {
+              #Options: Static,Hardened,Swarm,Recursive,Stealth,Agile,Regenerative,Polymorphic,Cascading,Orthagonal,Refractive
+              Encryption=Static
+              EType=M_Swat_Scout
+              LType=M_Swat_Riflewiener
+              MinTargets=4
+              MaxTargets=4
+              MinEnemies=4
+              MaxEnemies=6
+              SpawnCadence=15
+              MaxEnemiesAlive=8
+              MaxDirections=2
+              ScanTime=30
+              WarmUp=5
+              IFFUsed=1
+              @GrenadeChance=0.75
+              @GrenadeType=Sosiggrenade_Flash
+          }
+
+
+
+          {
+              #Options: Static,Hardened,Swarm,Recursive,Stealth,Agile,Regenerative,Polymorphic,Cascading,Orthagonal,Refractive
+              Encryption=Hardened
+              EType=M_Swat_Scout
+              LType=M_Swat_Scout
+              MinTargets=4
+              MaxTargets=4
+              MinEnemies=4
+              MaxEnemies=4
+              SpawnCadence=10
+              MaxEnemiesAlive=10
+              MaxDirections=4
+              ScanTime=30
+              WarmUp=5
+              IFFUsed=1
+              @GrenadeChance=0.75
+              @GrenadeType=Sosiggrenade_Flash
+          }
+
+
+
+          ]
+      }
+
+      SupplyChallenge{
+          #Options: SMG,FLAK,Machinegun,Flamethrower,Suppression
+          TurretType=SMG
+          NumTurrets=0
+          GID=M_Swat_Officer
+          NumGuards=4
+          IFFUsed=1
+      }
+
+      PatrolChallenge{
+          Patrols[
+
+          {
+              EType=M_Swat_Scout
+              LType=M_Swat_Officer
+              PatrolSize=4
+              MaxPatrols=4
+              MaxPatrols_LimitedAmmo=4
+              TimeTilRegen=5
+              TimeTilRegen_LimitedAmmo=5
+              IFFUsed=1
+          }
+
+          ]
+      }
+
+      TrapsChallenge{
+          Traps[
+
+          {
+              #Options: Poppers
+              Type=Poppers
+              MinNumber=0
+              MaxNumber=0
+          }
+
+          ]
+      }
+
+  }
+  #END OF LEVEL 3
+
+
+
+
+
+
+  #START OF LEVEL 4
+  {
+      NumOverrideTokensForHold=5
+      @MaxBoxesSpawned=7
+      @MinBoxesSpawned=3
+      @MaxTokensPerSupply=3
+      @MinTokensPerSupply=1
+      @BoxTokenChance=0.5
+
+      TakeChallenge{
+          #Options: SMG,FLAK,Machinegun,Flamethrower,Suppression
+          TurretType=SMG
+          NumTurrets=0
+          GID=M_Swat_Officer
+          NumGuards=5
+          IFFUsed=1
+      }
+
+      HoldChallenge{
+          Phases[
+
+          {
+              #Options: Static,Hardened,Swarm,Recursive,Stealth,Agile,Regenerative,Polymorphic,Cascading,Orthagonal,Refractive
+              Encryption=Static
+              EType=M_Swat_Riflewiener
+              LType=M_Swat_SpecOps
+              MinTargets=5
+              MaxTargets=5
+              MinEnemies=4
+              MaxEnemies=5
+              SpawnCadence=13
+              MaxEnemiesAlive=10
+              MaxDirections=2
+              ScanTime=30
+              WarmUp=5
+              IFFUsed=1
+              @GrenadeChance=0.75
+              @GrenadeType=Sosiggrenade_Flash
+          }
+
+
+
+          {
+              #Options: Static,Hardened,Swarm,Recursive,Stealth,Agile,Regenerative,Polymorphic,Cascading,Orthagonal,Refractive
+              Encryption=Hardened
+              EType=M_Swat_Ranger
+              LType=M_Swat_Riflewiener
+              MinTargets=4
+              MaxTargets=4
+              MinEnemies=4
+              MaxEnemies=4
+              SpawnCadence=13
+              MaxEnemiesAlive=10
+              MaxDirections=3
+              ScanTime=30
+              WarmUp=5
+              IFFUsed=1
+              @GrenadeChance=0.75
+              @GrenadeType=Sosiggrenade_Flash
+          }
+
+
+
+
+          {
+              #Options: Static,Hardened,Swarm,Recursive,Stealth,Agile,Regenerative,Polymorphic,Cascading,Orthagonal,Refractive
+              Encryption=Swarm
+              EType=M_Swat_Officer
+              LType=M_Swat_Heavy
+              MinTargets=2
+              MaxTargets=2
+              MinEnemies=3
+              MaxEnemies=3
+              SpawnCadence=10
+              MaxEnemiesAlive=10
+              MaxDirections=4
+              ScanTime=30
+              WarmUp=5
+              IFFUsed=1
+              @GrenadeChance=0.75
+              @GrenadeType=Sosiggrenade_Flash
+          }
+
+
+
+          ]
+      }
+
+      SupplyChallenge{
+          #Options: SMG,FLAK,Machinegun,Flamethrower,Suppression
+          TurretType=SMG
+          NumTurrets=0
+          GID=M_Swat_Officer
+          NumGuards=5
+          IFFUsed=1
+      }
+
+      PatrolChallenge{
+          Patrols[
+
+          {
+              EType=M_Swat_Sniper
+              LType=M_Swat_Heavy
+              PatrolSize=4
+              MaxPatrols=4
+              MaxPatrols_LimitedAmmo=4
+              TimeTilRegen=5
+              TimeTilRegen_LimitedAmmo=5
+              IFFUsed=1
+          }
+
+          ]
+      }
+
+      TrapsChallenge{
+          Traps[
+
+          {
+              #Options: Poppers
+              Type=Poppers
+              MinNumber=0
+              MaxNumber=0
+          }
+
+          ]
+      }
+
+  }
+  #END OF LEVEL 4
+
+
+
+
+
+
+  #START OF LEVEL 5
+  {
+      NumOverrideTokensForHold=5
+      @MaxBoxesSpawned=12
+      @MinBoxesSpawned=8
+      @MaxTokensPerSupply=6
+      @MinTokensPerSupply=3
+      @BoxTokenChance=0.5
+
+
+      TakeChallenge{
+          #Options: SMG,FLAK,Machinegun,Flamethrower,Suppression
+          TurretType=SMG
+          NumTurrets=0
+          GID=M_Swat_Officer
+          NumGuards=6
+          IFFUsed=1
+      }
+
+      HoldChallenge{
+          Phases[
+
+          {
+              #Options: Static,Hardened,Swarm,Recursive,Stealth,Agile,Regenerative,Polymorphic,Cascading,Orthagonal,Refractive
+              Encryption=Static
+              EType=M_Swat_Riflewiener
+              LType=M_Swat_SpecOps
+              MinTargets=6
+              MaxTargets=6
+              MinEnemies=4
+              MaxEnemies=5
+              SpawnCadence=10
+              MaxEnemiesAlive=10
+              MaxDirections=2
+              ScanTime=30
+              WarmUp=5
+              IFFUsed=1
+              @GrenadeChance=0.75
+              @GrenadeType=Sosiggrenade_Flash
+          }
+
+
+
+          {
+              #Options: Static,Hardened,Swarm,Recursive,Stealth,Agile,Regenerative,Polymorphic,Cascading,Orthagonal,Refractive
+              Encryption=Hardened
+              EType=M_Swat_Scout
+              LType=M_Swat_Riflewiener
+              MinTargets=0
+              MaxTargets=0
+              MinEnemies=8
+              MaxEnemies=8
+              SpawnCadence=8
+              MaxEnemiesAlive=20
+              MaxDirections=4
+              ScanTime=60
+              WarmUp=5
+              IFFUsed=1
+              @GrenadeChance=0.75
+              @GrenadeType=Sosiggrenade_Flash
+          }
+
+
+
+
+          {
+              #Options: Static,Hardened,Swarm,Recursive,Stealth,Agile,Regenerative,Polymorphic,Cascading,Orthagonal,Refractive
+              Encryption=Swarm
+              EType=M_Swat_Scout
+              LType=M_Swat_Heavy
+              MinTargets=3
+              MaxTargets=3
+              MinEnemies=3
+              MaxEnemies=3
+              SpawnCadence=7
+              MaxEnemiesAlive=16
+              MaxDirections=4
+              ScanTime=50
+              WarmUp=5
+              IFFUsed=1
+              @GrenadeChance=0.75
+              @GrenadeType=Sosiggrenade_Flash
+          }
+
+
+
+          ]
+      }
+
+      SupplyChallenge{
+          #Options: SMG,FLAK,Machinegun,Flamethrower,Suppression
+          TurretType=SMG
+          NumTurrets=0
+          GID=M_Swat_Officer
+          NumGuards=6
+          IFFUsed=1
+      }
+
+      PatrolChallenge{
+          Patrols[
+
+          {
+              EType=M_Swat_Sniper
+              LType=M_Swat_Heavy
+              PatrolSize=2
+              MaxPatrols=8
+              MaxPatrols_LimitedAmmo=8
+              TimeTilRegen=5
+              TimeTilRegen_LimitedAmmo=5
+              IFFUsed=1
+          }
+
+          ]
+      }
+
+      TrapsChallenge{
+          Traps[
+
+          {
+              #Options: Poppers
+              Type=Poppers
+              MinNumber=0
+              MaxNumber=0
+          }
+
+          ]
+      }
+
+  }
+  #END OF LEVEL 5
+
+
+
+
+
+  ]
+  #END OF LEVELS
+
+}
+]
+#END OF PROGRESSIONS
