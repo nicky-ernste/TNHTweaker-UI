@@ -27,6 +27,7 @@ namespace TNHTweaker_UI.BusinessLogic
             {
                 Converters = new List<JsonConverter>
                 {
+                    new CharacterGroupConverter(),
                     new EraTypeConverter(),
                     new FeedOptionConverter(),
                     new MeleeHandednessConverter(),
