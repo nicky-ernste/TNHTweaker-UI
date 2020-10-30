@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using TNHTweaker_UI.Models.Attributes;
 using TNHTweaker_UI.Models.Enums;
 
-namespace TNHTweaker_UI.Models
+namespace TNHTweaker_UI.Models.OldFormat
 {
     /// <summary>
     /// Class that defines the options for a take challenge.
@@ -21,7 +21,7 @@ namespace TNHTweaker_UI.Models
         /// <summary>
         /// Sets the team that spawned defenders will be on. Default is 1, and the players IFF is 0.
         /// </summary>
-        [JsonProperty("IFFUsed")]
+        [PropertyName("IFFUsed")]
         public int IffUsed { get; set; } = 1;
 
         /// <summary>
@@ -32,6 +32,7 @@ namespace TNHTweaker_UI.Models
         /// <summary>
         /// Sets the type of sosig defenders that will spawn
         /// </summary>
-        public string EnemyType { get; set; }
+        [PropertyName("GID")]
+        public string EnemyId { get; set; }
     }
 }

@@ -11,16 +11,16 @@ namespace TNHTweaker_UI.SerializerTester
         public static async Task Main(string[] args)
         {
             Console.WriteLine("Reading character file");
-            var filePath = ".\\character.txt";
-            var writePath = ".\\exportedCharacter.txt";
+            var filePath = ".\\character.json";
+            var writePath = ".\\exportedCharacter.json";
             if (!File.Exists(filePath))
             {
-                Console.WriteLine("Cannot find the character.txt file in the base directory.");
+                Console.WriteLine("Cannot find the character.json file in the base directory.");
                 Console.ReadKey();
                 return;
             }
 
-            var characterText = await File.ReadAllLinesAsync(filePath);
+            var characterText = await File.ReadAllTextAsync(filePath);
             var serializer = new CharacterSerializer();
             var character = serializer.ReadCharacterFromString(characterText);
 

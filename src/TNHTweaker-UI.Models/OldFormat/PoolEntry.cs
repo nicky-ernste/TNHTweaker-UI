@@ -1,7 +1,7 @@
 ﻿using TNHTweaker_UI.Models.Attributes;
 using TNHTweaker_UI.Models.Enums;
 
-namespace TNHTweaker_UI.Models
+namespace TNHTweaker_UI.Models.OldFormat
 {
     /// <summary>
     /// Class that defines a single equipment pool entry.

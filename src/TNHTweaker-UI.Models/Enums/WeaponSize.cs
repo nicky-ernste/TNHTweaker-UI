@@ -46,6 +46,6 @@ namespace TNHTweaker_UI.Models.Enums
         /// <summary>
         /// Spawns over sized weapons.
         /// </summary>
-        OverSize = 128
+        Oversize = 128
     }
 }

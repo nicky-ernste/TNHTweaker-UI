@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using TNHTweaker_UI.Models.Attributes;
 using TNHTweaker_UI.Models.Enums;
 
-namespace TNHTweaker_UI.Models
+namespace TNHTweaker_UI.Models.OldFormat
 {
     /// <summary>
     /// Class that defines an object table.
@@ -13,7 +12,7 @@ namespace TNHTweaker_UI.Models
         /// <summary>
         /// The file name of the icon to show in the item spawner.
         /// </summary>
-        public string IconName { get; set; }
+        public string Icon { get; set; }
 
         /// <summary>
         /// The category of the item that should be spawned in this pool.
@@ -33,12 +32,6 @@ namespace TNHTweaker_UI.Models
         public int MaxAmmoCapacity { get; set; } = -1;
 
         /// <summary>
-        /// This is the exact ammo capacity of weapons that will be added to the table.
-        /// NOTE: If you are spawning something other than weapons in this pool, set this to -1.
-        /// </summary>
-        public int RequiredExactCapacity { get; set; } = -1;
-
-        /// <summary>
         /// Unknown what this does, but set to false by default.
         /// </summary>
         public bool IsBlanked { get; set; }
@@ -54,16 +47,16 @@ namespace TNHTweaker_UI.Models
         public bool SpawnsInLargeCase { get; set; }
 
         /// <summary>
-        /// If <c>true</c>, this object pool will use items from the <see cref="IdOverride"/> list instead of automatically generating.
+        /// If <c>true</c>, this object pool will use items from the <see cref="IDOverride"/> list instead of automatically generating.
         /// </summary>
-        [JsonProperty("UseIDOverride")]
+        [PropertyName("UseIDListOverride")]
         public bool UseIdListOverride { get; set; }
 
         /// <summary>
         /// A list of Object IDs that will be added to this pool.
         /// </summary>
-        [JsonProperty("IDOverride")]
-        public IList<string> IdOverride { get; set; }
+        [PropertyName("IDOverride")]
+        public string[] IdOverride { get; set; }
 
         /// <summary>
         /// The eras of weaponry to spawn in this pool.
@@ -93,11 +86,12 @@ namespace TNHTweaker_UI.Models
         /// <summary>
         /// The firing modes that won't spawn in this pool.
         /// </summary>
-        public WeaponMode ExcludedModes { get; set; }
+        public WeaponMode ExcludeModes { get; set; }
 
         /// <summary>
         /// The feed options of weaponry to spawn in this pool.
         /// </summary>
+        [PropertyName("Feedoptions")]
         public FeedOption FeedOptions { get; set; }
 
         /// <summary>
@@ -145,5 +139,11 @@ namespace TNHTweaker_UI.Models
         /// The damage types of throwables to spawn in this pool.
         /// </summary>
         public ThrownDamageType ThrownDamageTypes { get; set; }
+
+        /// <summary>
+        /// Unused, but must be declared in the character file.
+        /// </summary>
+        [PropertyName("Objs")]
+        public object[] Objects { get; set; } = new object[0];
     }
 }
