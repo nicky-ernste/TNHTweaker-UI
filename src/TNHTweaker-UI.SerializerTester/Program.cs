@@ -11,7 +11,7 @@ namespace TNHTweaker_UI.SerializerTester
         public static async Task Main(string[] args)
         {
             Console.WriteLine("Reading character file");
-            var filePath = ".\\character.json";
+            var filePath = ".\\character.txt";
             var writePath = ".\\exportedCharacter.json";
             if (!File.Exists(filePath))
             {
@@ -20,9 +20,10 @@ namespace TNHTweaker_UI.SerializerTester
                 return;
             }
 
-            var characterText = await File.ReadAllTextAsync(filePath);
-            var serializer = new CharacterSerializer();
-            var character = serializer.ReadCharacterFromString(characterText);
+            var characterText = await File.ReadAllLinesAsync(filePath);
+            var serializer = new CharacterSerializerOld();
+            var converter = new CharacterConverter();
+            var character = serializer.ReadCharacterFromStringOldFormat(characterText);
 
             if (character != null)
             {
@@ -30,7 +31,15 @@ namespace TNHTweaker_UI.SerializerTester
                 Console.WriteLine(character.Description);
             }
 
-            var charString = serializer.WriteCharacterToString(character);
+            var convertedCharacter = converter.ConvertCharacterToNewFormat(character);
+            if (convertedCharacter != null)
+            {
+                Console.WriteLine($"Converted character: {convertedCharacter.DisplayName}");
+                Console.WriteLine(convertedCharacter.Description);
+            }
+
+            var newSerializer = new CharacterSerializer();
+            var charString = newSerializer.WriteCharacterToString(convertedCharacter);
             if (!string.IsNullOrEmpty(charString))
             {
                 Console.WriteLine($"Writing character to {writePath}");

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -7,23 +6,18 @@ using TNHTweaker_UI.Models.Enums;
 
 namespace TNHTweaker_UI.BusinessLogic.JsonConverters
 {
-    public class BaseEnumConverter<T> : JsonConverter<T>
+    public abstract class BaseEnumConverter<T> : JsonConverter<T>
     {
         public override void WriteJson(JsonWriter writer, T value, JsonSerializer serializer)
         {
             var stringValues = value.ToString().Split(',').ToList();
             writer.WriteStartArray();
 
-            //If the only value in an enum type is "None" then we write an empty array.
-            if (stringValues.Count >= 1 && !stringValues[0].Equals(nameof(EraType.None)))
+            //If the only value in an enum type is "None" or "0" then we write an empty array.
+            if (stringValues.Count >= 1 && !stringValues[0].Equals("0") && !stringValues[0].Equals(nameof(EraType.None)))
                 stringValues.ForEach(sv => writer.WriteValue(sv.Trim()));
 
             writer.WriteEndArray();
-        }
-
-        public override T ReadJson(JsonReader reader, Type objectType, T existingValue, bool hasExistingValue, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
         }
 
         /// <summary>

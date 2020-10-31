@@ -420,8 +420,10 @@ namespace TNHTweaker_UI.BusinessLogic
                 _propertyToEnumDictionary.TryGetValue(property, out var enumType);
                 if (property.Equals("Type") && instanceWithProperty is TrapDefinition)
                     enumType = typeof(TrapType); //TODO ugly override for a property with the same name but different type.
-                if (enumType != null && !string.IsNullOrEmpty(stringValue))
+                if (enumType != null)
                 {
+                    if (string.IsNullOrEmpty(stringValue))
+                        stringValue = "1"; //Since there are no zero values we set it to 1 so it well serialize to the "None" enum value.
                     var enumValue = Enum.Parse(enumType, stringValue);
                     instanceWithProperty?.GetType().GetProperty(customPropertyName)?.SetValue(instanceWithProperty, enumValue);
                     return;
