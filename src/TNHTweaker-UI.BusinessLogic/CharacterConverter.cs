@@ -62,7 +62,7 @@ namespace TNHTweaker_UI.BusinessLogic
         private static WeaponDefinition ConvertWeaponDefinition(OldFormat.WeaponDefinition oldWeaponDefinition)
         {
             if (oldWeaponDefinition == null)
-                return null;
+                return new WeaponDefinition(); //Just return a new empty instance otherwise the character won't load even though the respective "HasPrimaryX" property is false.
 
             var newWeaponDefinition = new WeaponDefinition
             {
@@ -90,7 +90,9 @@ namespace TNHTweaker_UI.BusinessLogic
                 ExcludedModes = oldObjectTableDefinition.ExcludeModes,
                 Features = oldObjectTableDefinition.Features,
                 FeedOptions = oldObjectTableDefinition.FeedOptions,
-                IconName = oldObjectTableDefinition.Icon,
+                IconName = oldObjectTableDefinition.Icon.StartsWith("@")
+                    ? oldObjectTableDefinition.Icon.Replace("@", string.Empty) //If people use an @ sign for icons they do not load in the new format so remove them.
+                    : oldObjectTableDefinition.Icon,
                 IdOverride = oldObjectTableDefinition.IdOverride,
                 IsBlanked = oldObjectTableDefinition.IsBlanked,
                 MaxAmmoCapacity = oldObjectTableDefinition.MaxAmmoCapacity,

@@ -127,11 +127,16 @@ namespace TNHTweaker_UI.CustomCharacterConverter.ViewModels
 
             var convertedCharacterJson = _newCharacterSerializer.WriteCharacterToString(convertedCharacter);
             var directoryPath = new FileInfo(CharacterFilePath).DirectoryName;
+            if (directoryPath == null)
+            {
+                ConversionStatusLog = $"The path at: \"{CharacterFilePath}\" doesn't seem to exist";
+                return;
+            }
 
             try
             {
                 File.WriteAllText(Path.Combine(directoryPath, "convertedCharacter.json"), convertedCharacterJson);
-                ConversionStatusLog = $"The custom character was successfully converted and written to: \"{CharacterFilePath}\"";
+                ConversionStatusLog = $"The custom character was successfully converted and written to: \"{Path.Combine(directoryPath, "convertedCharacter.json")}\"";
 
                 //Reset values.
                 _loadedCharacter = null;
