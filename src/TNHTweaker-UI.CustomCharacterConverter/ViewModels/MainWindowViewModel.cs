@@ -156,6 +156,8 @@ namespace TNHTweaker_UI.CustomCharacterConverter.ViewModels
             {
                 _loadedCharacter = _oldCharacterSerializer.ReadCharacterFromStringOldFormat(File.ReadAllLines(CharacterFilePath));
                 CanConvertCharacter = _loadedCharacter != null;
+                if (_loadedCharacter != null)
+                    ConversionStatusLog = $"Character successfully loaded: {_loadedCharacter.DisplayName}";
             }
             catch (IOException e)
             {
