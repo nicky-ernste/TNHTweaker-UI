@@ -9,38 +9,43 @@ namespace TNHTweaker_UI.Models.Enums
     public enum SetType
     {
         /// <summary>
+        /// No specific set type is applied.
+        /// </summary>
+        None = 1,
+
+        /// <summary>
         /// Mainly real-life weapons and equipment.
         /// </summary>
-        Real = 1,
+        Real = 2,
 
         /// <summary>
         /// Mainly fictional weapons and equipment that could really exist today.
         /// </summary>
-        GroundedFictional = 2,
+        GroundedFictional = 4,
 
         /// <summary>
         /// Mainly fictional weapons and equipment that don't exist or are SciFi.
         /// </summary>
-        SciFiFictional = 4,
+        SciFiFictional = 8,
 
         /// <summary>
         /// Mainly meme and other crazy weapons and equipment.
         /// </summary>
-        Meme = 8,
+        Meme = 16,
 
         /// <summary>
         /// Mainly weapons and equipment used in Meat Fortress.
         /// </summary>
-        MF = 16,
+        MF = 32,
 
         /// <summary>
         /// Mainly weapons and equipment that were added in Holiday updates?
         /// </summary>
-        Holiday = 32,
+        Holiday = 64,
 
         /// <summary>
         /// Mainly weapons and equipment that are used in Take and Hold?
         /// </summary>
-        TNH = 64
+        TNH = 128,
     }
 }

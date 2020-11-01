@@ -2,7 +2,7 @@
 using TNHTweaker_UI.Models.Attributes;
 using TNHTweaker_UI.Models.Enums;
 
-namespace TNHTweaker_UI.Models
+namespace TNHTweaker_UI.Models.OldFormat
 {
     /// <summary>
     /// Base class that defines all the properties of a custom character.

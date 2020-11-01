@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TNHTweaker_UI.Models
+namespace TNHTweaker_UI.Models.OldFormat
 {
     /// <summary>
     /// Class that defines that options for all phases of a hold.
