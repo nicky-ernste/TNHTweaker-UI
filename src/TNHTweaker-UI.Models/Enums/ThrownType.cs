@@ -11,21 +11,21 @@ namespace TNHTweaker_UI.Models.Enums
         /// <summary>
         /// No specific thrown types will be spawned.
         /// </summary>
-        None = 0,
+        None = 1,
 
         /// <summary>
         /// Spawns thrown weapons with a manual fuse.
         /// </summary>
-        ManualFuse = 1,
+        ManualFuse = 2,
 
         /// <summary>
         /// Spawns thrown weapons with a pin.
         /// </summary>
-        Pinned = 2,
+        Pinned = 4,
 
         /// <summary>
         /// Spawns thrown weapons with a strange mechanism.
         /// </summary>
-        Strange = 4
+        Strange = 8
     }
 }

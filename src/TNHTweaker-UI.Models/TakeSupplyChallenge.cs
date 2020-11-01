@@ -1,4 +1,5 @@
-﻿using TNHTweaker_UI.Models.Enums;
+﻿using Newtonsoft.Json;
+using TNHTweaker_UI.Models.Enums;
 
 namespace TNHTweaker_UI.Models
 {
@@ -20,7 +21,8 @@ namespace TNHTweaker_UI.Models
         /// <summary>
         /// Sets the team that spawned defenders will be on. Default is 1, and the players IFF is 0.
         /// </summary>
-        public int IFFUsed { get; set; } = 1;
+        [JsonProperty("IFFUsed")]
+        public int IffUsed { get; set; } = 1;
 
         /// <summary>
         /// Sets the type of turrets that will spawn as defenses.
@@ -30,6 +32,6 @@ namespace TNHTweaker_UI.Models
         /// <summary>
         /// Sets the type of sosig defenders that will spawn
         /// </summary>
-        public string GID { get; set; }
+        public string EnemyType { get; set; }
     }
 }

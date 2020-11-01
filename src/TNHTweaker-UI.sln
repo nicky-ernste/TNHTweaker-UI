@@ -9,17 +9,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{252216
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{2D77A16B-AD75-47A8-B033-1B77289BBCE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TNHTweaker-UI.BusinessLogic", "TNHTweaker-UI.BusinessLogic\TNHTweaker-UI.BusinessLogic.csproj", "{6DDFC30B-B780-4C01-B51B-F65DB81A5161}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TNHTweaker-UI.BusinessLogic", "TNHTweaker-UI.BusinessLogic\TNHTweaker-UI.BusinessLogic.csproj", "{6DDFC30B-B780-4C01-B51B-F65DB81A5161}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TNHTweaker-UI.WPF", "TNHTweaker-UI.WPF\TNHTweaker-UI.WPF.csproj", "{D5095E4A-F9B4-472E-9D0A-1096010E083D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TNHTweaker-UI.Common", "TNHTweaker-UI.Common\TNHTweaker-UI.Common.csproj", "{44AD4D69-D279-483D-8D0B-6722470A236E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TNHTweaker-UI.Common", "TNHTweaker-UI.Common\TNHTweaker-UI.Common.csproj", "{44AD4D69-D279-483D-8D0B-6722470A236E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TNHTweaker-UI.BusinessLogic.Tests", "TNHTweaker-UI.BusinessLogic.Tests\TNHTweaker-UI.BusinessLogic.Tests.csproj", "{2147F9BD-ECAA-4478-90BA-083C6B382097}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TNHTweaker-UI.BusinessLogic.Tests", "TNHTweaker-UI.BusinessLogic.Tests\TNHTweaker-UI.BusinessLogic.Tests.csproj", "{2147F9BD-ECAA-4478-90BA-083C6B382097}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TNHTweaker-UI.Common.Tests", "TNHTweaker-UI.Common.Tests\TNHTweaker-UI.Common.Tests.csproj", "{2939501E-E45B-4A89-9795-12D9B5069F60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TNHTweaker-UI.Common.Tests", "TNHTweaker-UI.Common.Tests\TNHTweaker-UI.Common.Tests.csproj", "{2939501E-E45B-4A89-9795-12D9B5069F60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TNHTweaker-UI.Models", "TNHTweaker-UI.Models\TNHTweaker-UI.Models.csproj", "{A57EA737-A405-4ABF-8595-17686BFBA4BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TNHTweaker-UI.Models", "TNHTweaker-UI.Models\TNHTweaker-UI.Models.csproj", "{A57EA737-A405-4ABF-8595-17686BFBA4BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TNHTweaker-UI.SerializerTester", "TNHTweaker-UI.SerializerTester\TNHTweaker-UI.SerializerTester.csproj", "{FE039FBB-82DB-405F-892E-F875383924AA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TNHTweaker-UI.CustomCharacterConverter", "TNHTweaker-UI.CustomCharacterConverter\TNHTweaker-UI.CustomCharacterConverter.csproj", "{3ED2C058-A8A7-4CB1-AA2B-988B60832CFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{A57EA737-A405-4ABF-8595-17686BFBA4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A57EA737-A405-4ABF-8595-17686BFBA4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A57EA737-A405-4ABF-8595-17686BFBA4BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE039FBB-82DB-405F-892E-F875383924AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE039FBB-82DB-405F-892E-F875383924AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE039FBB-82DB-405F-892E-F875383924AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE039FBB-82DB-405F-892E-F875383924AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ED2C058-A8A7-4CB1-AA2B-988B60832CFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ED2C058-A8A7-4CB1-AA2B-988B60832CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ED2C058-A8A7-4CB1-AA2B-988B60832CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ED2C058-A8A7-4CB1-AA2B-988B60832CFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +74,8 @@ Global
 		{2147F9BD-ECAA-4478-90BA-083C6B382097} = {2D77A16B-AD75-47A8-B033-1B77289BBCE9}
 		{2939501E-E45B-4A89-9795-12D9B5069F60} = {25221652-F9BC-4ACF-BE68-36904A6C6A6E}
 		{A57EA737-A405-4ABF-8595-17686BFBA4BD} = {25221652-F9BC-4ACF-BE68-36904A6C6A6E}
+		{FE039FBB-82DB-405F-892E-F875383924AA} = {691605F0-2304-409A-B15D-64F257766EC8}
+		{3ED2C058-A8A7-4CB1-AA2B-988B60832CFA} = {691605F0-2304-409A-B15D-64F257766EC8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28F94E52-C41A-4225-A1E4-4E02AC17C5B8}

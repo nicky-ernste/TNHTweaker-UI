@@ -11,26 +11,26 @@ namespace TNHTweaker_UI.Models.Enums
         /// <summary>
         /// No specific damage type for thrown weapons.
         /// </summary>
-        None = 0,
+        None = 1,
 
         /// <summary>
         /// Spawns kinetic damage type thrown weapons.
         /// </summary>
-        Kinetic = 1,
+        Kinetic = 2,
 
         /// <summary>
         /// Spawns explosive damage type thrown weapons.
         /// </summary>
-        Explosive = 2,
+        Explosive = 4,
 
         /// <summary>
         /// Spawns fire damage type thrown weapons.
         /// </summary>
-        Fire = 4,
+        Fire = 8,
 
         /// <summary>
         /// Spawns utility damage type thrown weapons.
         /// </summary>
-        Utility = 8
+        Utility = 16
     }
 }

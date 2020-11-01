@@ -11,51 +11,51 @@ namespace TNHTweaker_UI.Models.Enums
         /// <summary>
         /// No specific selection for weapon power.
         /// </summary>
-        None = 0,
+        None = 1,
 
         /// <summary>
         /// Spawns weapons with small calibers.
         /// </summary>
-        Tiny = 1,
+        Tiny = 2,
 
         /// <summary>
         /// Spawns weapons with pistol calibers.
         /// </summary>
-        Pistol = 2,
+        Pistol = 4,
 
         /// <summary>
         /// Spawns weapons with shotgun calibers.
         /// </summary>
-        Shotgun = 4,
+        Shotgun = 8,
 
         /// <summary>
         /// Spawns weapons with intermediate power calibers.
         /// </summary>
-        Intermediate = 8,
+        Intermediate = 16,
 
         /// <summary>
         /// Spawns weapons with full power calibers.
         /// </summary>
-        FullPower = 16,
+        FullPower = 32,
 
         /// <summary>
         /// Spawns weapons with anti material calibers.
         /// </summary>
-        AntiMaterial = 32,
+        AntiMaterial = 64,
 
         /// <summary>
         /// Spawns weapons with ordinance (explosive) calibers.
         /// </summary>
-        Ordinance = 64,
+        Ordinance = 128,
 
         /// <summary>
         /// Spawns weapons with exotic calibers.
         /// </summary>
-        Exotic = 128,
+        Exotic = 256,
 
         /// <summary>
         /// Spawns weapons that use fire.
         /// </summary>
-        Fire = 256
+        Fire = 512
     }
 }

@@ -1,11 +1,11 @@
 ﻿using TNHTweaker_UI.Models.Enums;
 
-namespace TNHTweaker_UI.Models
+namespace TNHTweaker_UI.Models.OldFormat
 {
     /// <summary>
-    /// Class that defines the traps that will be present in the level.
+    /// Class that defines a single trap type.
     /// </summary>
-    public class TrapsChallenge
+    public class TrapDefinition
     {
         /// <summary>
         /// The type of traps that will be present.

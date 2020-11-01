@@ -1,6 +1,7 @@
-﻿using TNHTweaker_UI.Models.Enums;
+﻿using TNHTweaker_UI.Models.Attributes;
+using TNHTweaker_UI.Models.Enums;
 
-namespace TNHTweaker_UI.Models
+namespace TNHTweaker_UI.Models.OldFormat
 {
     /// <summary>
     /// Class that defines a single equipment pool entry.
@@ -20,7 +21,8 @@ namespace TNHTweaker_UI.Models
         /// <summary>
         /// Cost of purchasing an item from this pool when playing on limited ammo mode.
         /// </summary>
-        public int TokenCost_Limited { get; set; }
+        [PropertyName("TokenCost_Limited")]
+        public int TokenCostLimited { get; set; }
 
         /// <summary>
         /// The level that this pool can start appearing at.
